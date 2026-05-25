@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Urinova — Your Health, Your Data, Instantly</title>
+  <meta name="description" content="Urinova is a hands-free, AI-powered home urinalysis device that monitors your health in real time — hydration, UTIs, kidney health, glucose, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0A1628;
+      --navy-mid: #152340;
+      --teal: #0D9488;
+      --teal-light: #14B8A8;
+      --teal-pale: #CCFBF1;
+      --amber: #F59E0B;
+      --red: #EF4444;
+      --green: #22C55E;
+      --white: #FFFFFF;
+      --off-white: #F8F8F6;
+      --gray-100: #F1F5F9;
+      --gray-200: #E2E8F0;
+      --gray-400: #94A3B8;
+      --gray-600: #475569;
+      --gray-800: #1E293B;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--navy);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 0 24px;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 1.4rem; font-weight: 800; color: var(--navy);
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--teal); }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      font-size: 0.875rem; font-weight: 500; color: var(--gray-600);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .btn-nav {
+      background: var(--navy); color: var(--white);
+      padding: 10px 20px; border-radius: 8px;
+      font-size: 0.875rem; font-weight: 600;
+      text-decoration: none; transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-nav:hover { background: var(--navy-mid); color: var(--white); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #0D3D36 100%);
+      display: flex; align-items: center;
+      padding: 100px 24px 60px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(13,148,136,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -150px; left: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(13,148,136,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(13,148,136,0.2); border: 1px solid rgba(13,184,168,0.4);
+      color: var(--teal-light); padding: 6px 14px; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+    .badge-dot { width: 7px; height: 7px; background: var(--teal-light); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 800; color: var(--white);
+      line-height: 1.15; letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: normal; color: var(--teal-light); }
+    .hero p {
+      font-size: 1.1rem; color: rgba(255,255,255,0.75);
+      margin-bottom: 36px; max-width: 480px; line-height: 1.7;
+    }
+    .hero-form { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-form input {
+      flex: 1; min-width: 220px;
+      padding: 14px 18px; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      color: var(--white); font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      outline: none; transition: border-color 0.2s;
+    }
+    .hero-form input::placeholder { color: rgba(255,255,255,0.45); }
+    .hero-form input:focus { border-color: var(--teal-light); }
+    .btn-primary {
+      background: var(--teal); color: var(--white);
+      padding: 14px 28px; border-radius: 10px;
+      font-size: 0.95rem; font-weight: 700;
+      border: none; cursor: pointer; transition: background 0.2s, transform 0.1s;
+      white-space: nowrap; font-family: 'Inter', sans-serif;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--teal-light); transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+    .hero-sub {
+      margin-top: 16px; font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+    }
+    .hero-stats {
+      display: flex; gap: 32px; margin-top: 48px; flex-wrap: wrap;
+    }
+    .stat { }
+    .stat-num { font-size: 1.8rem; font-weight: 800; color: var(--white); line-height: 1; }
+    .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
+
+    /* Hero device visual */
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+    }
+    .device-mockup {
+      width: 280px; height: 420px;
+      background: linear-gradient(160deg, #1a2e4a 0%, #0f2137 100%);
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05), inset 0 1px 0 rgba(255,255,255,0.1);
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 20px;
+      position: relative; overflow: hidden;
+    }
+    .device-mockup::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(13,184,168,0.6), transparent);
+    }
+    .device-screen {
+      width: 200px; background: var(--navy);
+      border-radius: 16px; padding: 16px;
+      border: 1px solid rgba(13,184,168,0.3);
+    }
+    .screen-title { font-size: 0.65rem; color: var(--teal-light); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+    .metric-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .metric-row:last-child { border-bottom: none; }
+    .metric-name { font-size: 0.7rem; color: rgba(255,255,255,0.6); }
+    .metric-val { font-size: 0.75rem; font-weight: 700; }
+    .val-green { color: #22C55E; }
+    .val-amber { color: #F59E0B; }
+    .val-teal { color: #14B8A8; }
+    .device-led {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(13,184,168,0.8) 0%, rgba(13,148,136,0.3) 60%, transparent 100%);
+      box-shadow: 0 0 20px rgba(13,184,168,0.5);
+      animation: ledPulse 3s ease-in-out infinite;
+    }
+    @keyframes ledPulse { 0%,100%{opacity:0.8;box-shadow:0 0 20px rgba(13,184,168,0.5)} 50%{opacity:1;box-shadow:0 0 35px rgba(13,184,168,0.9)} }
+    .device-label { font-size: 0.7rem; color: rgba(255,255,255,0.3); letter-spacing: 3px; text-transform: uppercase; }
+    .device-stripe {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light), var(--teal));
+    }
+
+    /* ── SECTION BASE ───────────────────────────────────── */
+    section { padding: 96px 24px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800; letter-spacing: -1px;
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--gray-600);
+      max-width: 560px; line-height: 1.7;
+    }
+    .text-center { text-align: center; }
+    .text-center .section-sub { margin: 0 auto; }
+
+    /* ── PROBLEM ─────────────────────────────────────────── */
+    .problem { background: var(--off-white); }
+    .problem-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; margin-top: 56px;
+    }
+    .problem-card {
+      background: var(--white); border-radius: 16px;
+      padding: 32px; border: 1px solid var(--gray-200);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .problem-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .problem-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 20px;
+    }
+    .icon-red { background: #FEF2F2; }
+    .icon-amber { background: #FFFBEB; }
+    .icon-blue { background: #EFF6FF; }
+    .problem-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+    .problem-card p { font-size: 0.9rem; color: var(--gray-600); line-height: 1.65; }
+    .problem-quote {
+      margin-top: 10px; padding: 10px 14px;
+      background: var(--gray-100); border-radius: 8px;
+      font-size: 0.8rem; color: var(--gray-600);
+      font-style: italic; border-left: 3px solid var(--teal);
+    }
+
+    /* ── HOW IT WORKS ───────────────────────────────────── */
+    .steps { display: flex; gap: 32px; margin-top: 64px; position: relative; }
+    .steps::before {
+      content: '';
+      position: absolute; top: 36px; left: 36px; right: 36px; height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      z-index: 0;
+    }
+    .step { flex: 1; text-align: center; position: relative; z-index: 1; }
+    .step-num {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--teal); color: var(--white);
+      font-size: 1.4rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; box-shadow: 0 0 0 6px var(--white), 0 0 0 8px var(--teal-pale);
+    }
+    .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .step p { font-size: 0.875rem; color: var(--gray-600); line-height: 1.6; }
+
+    /* ── WHAT IT TRACKS ─────────────────────────────────── */
+    .tracks { background: var(--navy); color: var(--white); }
+    .tracks .section-title { color: var(--white); }
+    .tracks .section-sub { color: rgba(255,255,255,0.6); }
+    .tracks-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin-top: 56px;
+    }
+    .track-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 24px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .track-card:hover { background: rgba(13,148,136,0.15); transform: translateY(-2px); }
+    .track-icon { font-size: 2rem; margin-bottom: 12px; }
+    .track-name { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .track-markers { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+    .track-badge {
+      display: inline-block; margin-top: 10px;
+      padding: 3px 10px; border-radius: 100px;
+      font-size: 0.7rem; font-weight: 600;
+    }
+    .badge-teal { background: rgba(13,148,136,0.3); color: var(--teal-light); }
+    .badge-amber { background: rgba(245,158,11,0.25); color: #FCD34D; }
+
+    /* ── FEATURES ──────────────────────────────────────── */
+    .features-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: center; margin-top: 20px;
+    }
+    .feature-list { display: flex; flex-direction: column; gap: 28px; }
+    .feature-item { display: flex; gap: 18px; }
+    .feature-dot {
+      width: 44px; height: 44px; min-width: 44px;
+      border-radius: 12px; background: var(--teal-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .feature-item h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .feature-item p { font-size: 0.875rem; color: var(--gray-600); line-height: 1.6; }
+    .feature-visual {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: 24px; padding: 40px; min-height: 400px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .feature-visual::before {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(13,148,136,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .app-mockup {
+      width: 200px; background: #0F1F35; border-radius: 24px;
+      padding: 20px; border: 1px solid rgba(255,255,255,0.1);
+      position: relative; z-index: 1;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    }
+    .app-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .app-title { font-size: 0.7rem; font-weight: 700; color: var(--white); }
+    .app-time { font-size: 0.65rem; color: rgba(255,255,255,0.4); }
+    .app-score-ring {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: conic-gradient(var(--teal) 0% 76%, rgba(255,255,255,0.08) 76% 100%);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 0 0 3px rgba(13,148,136,0.3);
+    }
+    .score-inner {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: #0F1F35;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .score-num { font-size: 1.1rem; font-weight: 800; color: var(--white); line-height: 1; }
+    .score-label { font-size: 0.55rem; color: rgba(255,255,255,0.4); }
+    .app-metrics { display: flex; flex-direction: column; gap: 8px; }
+    .app-metric { display: flex; justify-content: space-between; align-items: center; }
+    .app-metric-name { font-size: 0.65rem; color: rgba(255,255,255,0.5); }
+    .app-metric-bar { flex: 1; height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; margin: 0 8px; }
+    .app-metric-fill { height: 100%; border-radius: 2px; }
+    .app-metric-val { font-size: 0.65rem; font-weight: 600; color: var(--white); }
+    .fill-green { background: #22C55E; }
+    .fill-teal { background: var(--teal-light); }
+    .fill-amber { background: #F59E0B; }
+    .fill-blue { background: #60A5FA; }
+
+    /* ── VS TABLE ──────────────────────────────────────── */
+    .vs { background: var(--off-white); }
+    .vs-table-wrap { overflow-x: auto; margin-top: 56px; }
+    .vs-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    .vs-table th {
+      padding: 16px 20px; text-align: left;
+      font-weight: 700; font-size: 0.8rem;
+      background: var(--white); border-bottom: 2px solid var(--gray-200);
+    }
+    .vs-table th.highlight { background: var(--navy); color: var(--white); border-radius: 12px 12px 0 0; }
+    .vs-table td {
+      padding: 14px 20px; border-bottom: 1px solid var(--gray-200);
+      background: var(--white);
+    }
+    .vs-table td.highlight { background: rgba(10,22,40,0.04); font-weight: 600; }
+    .vs-table tr:last-child td { border-bottom: none; }
+    .check { color: var(--green); font-size: 1rem; }
+    .cross { color: var(--red); font-size: 1rem; }
+    .partial { color: var(--amber); font-size: 0.85rem; font-style: italic; }
+
+    /* ── PRICING ───────────────────────────────────────── */
+    .pricing-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px; margin-top: 56px; max-width: 720px; margin-left: auto; margin-right: auto;
+    }
+    .pricing-card {
+      border-radius: 20px; padding: 36px;
+      border: 2px solid var(--gray-200);
+      background: var(--white);
+      transition: transform 0.2s;
+    }
+    .pricing-card:hover { transform: translateY(-4px); }
+    .pricing-card.featured {
+      border-color: var(--teal);
+      background: linear-gradient(160deg, #F0FDFA 0%, var(--white) 100%);
+      position: relative; overflow: hidden;
+    }
+    .featured-tag {
+      position: absolute; top: 20px; right: -28px;
+      background: var(--teal); color: var(--white);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 4px 40px;
+      transform: rotate(45deg);
+    }
+    .plan-name { font-size: 0.8rem; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 1px; }
+    .plan-price { font-size: 2.8rem; font-weight: 800; color: var(--navy); line-height: 1; margin: 12px 0 4px; }
+    .plan-price span { font-size: 1rem; font-weight: 500; color: var(--gray-400); }
+    .plan-sub-price { font-size: 0.85rem; color: var(--gray-600); margin-bottom: 20px; }
+    .plan-divider { height: 1px; background: var(--gray-200); margin: 20px 0; }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .plan-features li { font-size: 0.875rem; color: var(--gray-600); display: flex; gap: 10px; align-items: flex-start; }
+    .plan-features li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+    .plan-cta { margin-top: 28px; width: 100%; }
+    .btn-outline {
+      display: block; text-align: center;
+      padding: 13px 24px; border-radius: 10px;
+      border: 2px solid var(--navy); color: var(--navy);
+      font-weight: 700; font-size: 0.9rem;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+      font-family: 'Inter', sans-serif; cursor: pointer; background: transparent;
+      width: 100%;
+    }
+    .btn-outline:hover { background: var(--navy); color: var(--white); }
+    .btn-teal {
+      display: block; text-align: center;
+      padding: 13px 24px; border-radius: 10px;
+      background: var(--teal); color: var(--white);
+      font-weight: 700; font-size: 0.9rem;
+      text-decoration: none; transition: background 0.2s;
+      font-family: 'Inter', sans-serif; cursor: pointer; border: none;
+      width: 100%;
+    }
+    .btn-teal:hover { background: var(--teal-light); }
+    .fsa-note {
+      text-align: center; margin-top: 24px;
+      font-size: 0.8rem; color: var(--gray-600);
+    }
+    .fsa-note strong { color: var(--teal); }
+
+    /* ── FAQ ───────────────────────────────────────────── */
+    .faq { background: var(--off-white); }
+    .faq-list { max-width: 720px; margin: 56px auto 0; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--white); border-radius: 12px;
+      border: 1px solid var(--gray-200); overflow: hidden;
+    }
+    .faq-q {
+      width: 100%; padding: 20px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: none; border: none; cursor: pointer;
+      font-size: 0.95rem; font-weight: 600; color: var(--navy);
+      text-align: left; font-family: 'Inter', sans-serif;
+      transition: background 0.15s;
+    }
+    .faq-q:hover { background: var(--gray-100); }
+    .faq-icon { font-size: 1.2rem; color: var(--teal); font-weight: 300; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      font-size: 0.9rem; color: var(--gray-600); line-height: 1.7;
+      padding: 0 24px;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 24px 20px; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    /* ── CTA ───────────────────────────────────────────── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #0D3D36 100%);
+      text-align: center; padding: 96px 24px;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(13,148,136,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .cta-section .section-title { color: var(--white); position: relative; z-index: 1; }
+    .cta-section .section-sub { color: rgba(255,255,255,0.65); margin: 16px auto 40px; position: relative; z-index: 1; }
+    .cta-form { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+    .cta-form input {
+      padding: 14px 20px; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08); color: var(--white);
+      font-size: 0.95rem; font-family: 'Inter', sans-serif;
+      outline: none; min-width: 280px; transition: border-color 0.2s;
+    }
+    .cta-form input::placeholder { color: rgba(255,255,255,0.4); }
+    .cta-form input:focus { border-color: var(--teal-light); }
+    .cta-note { margin-top: 16px; font-size: 0.8rem; color: rgba(255,255,255,0.4); position: relative; z-index: 1; }
+
+    /* ── FOOTER ────────────────────────────────────────── */
+    footer {
+      background: var(--gray-800); color: rgba(255,255,255,0.5);
+      padding: 40px 24px; text-align: center;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-logo { font-size: 1.2rem; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+    .footer-logo span { color: var(--teal); }
+    footer p { font-size: 0.8rem; line-height: 1.6; }
+    .footer-links { display: flex; gap: 24px; justify-content: center; margin: 16px 0; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.4); text-decoration: none; }
+    .footer-links a:hover { color: var(--teal-light); }
+
+    /* ── SUCCESS STATE ──────────────────────────────────── */
+    .success-msg {
+      display: none; padding: 16px 24px; border-radius: 10px;
+      background: rgba(13,148,136,0.2); border: 1px solid rgba(13,184,168,0.4);
+      color: var(--teal-light); font-size: 0.9rem; font-weight: 600;
+      text-align: center;
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { order: -1; }
+      .device-mockup { width: 220px; height: 340px; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .steps { flex-direction: column; }
+      .steps::before { display: none; }
+      .step-num { width: 52px; height: 52px; font-size: 1.1rem; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero h1 { font-size: 2rem; }
+      .tracks-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────── -->
+<nav>
+  <div class="nav-logo">Uri<span>nova</span></div>
+  <div class="nav-links">
+    <a href="#how-it-works">How it works</a>
+    <a href="#tracks">What it tracks</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="#waitlist" class="btn-nav">Join Waitlist</a>
+  </div>
+  <div class="nav-hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────── -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Now accepting early access
+      </div>
+      <h1>Your health,<br><em>decoded</em><br>every day.</h1>
+      <p>Urinova is the first hands-free AI urinalysis device that monitors your hydration, kidney health, glucose, and UTI risk in real time — no strips, no cups, no lab visits.</p>
+      <div class="hero-form">
+        <input type="email" id="hero-email" placeholder="Enter your email address" />
+        <button class="btn-primary" onclick="submitWaitlist('hero-email', 'hero-success')">Join Waitlist →</button>
+      </div>
+      <div class="success-msg" id="hero-success">You're on the list! We'll be in touch soon.</div>
+      <p class="hero-sub">No spam. Early access pricing for waitlist members.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Biomarkers tracked</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">$249</div>
+          <div class="stat-label">Device price</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Real-time</div>
+          <div class="stat-label">AI insights</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="device-mockup">
+        <div class="device-screen">
+          <div class="screen-title">Today's Reading</div>
+          <div class="metric-row">
+            <span class="metric-name">Hydration</span>
+            <span class="metric-val val-green">Optimal</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-name">UTI Risk</span>
+            <span class="metric-val val-green">Low</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-name">Glucose</span>
+            <span class="metric-val val-teal">Normal</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-name">Kidney Stress</span>
+            <span class="metric-val val-amber">Mild ↑</span>
+          </div>
+        </div>
+        <div class="device-led"></div>
+        <div class="device-label">Urinova</div>
+        <div class="device-stripe"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROBLEM ───────────────────────────────── -->
+<section class="problem" id="problem">
+  <div class="section-inner">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">Your body signals problems daily.<br>You're not listening.</h2>
+    <p class="section-sub">Urine is the richest biological data stream your body produces — and you flush it without reading a single signal.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon icon-red">🚨</div>
+        <h3>UTIs Strike Without Warning</h3>
+        <p>Over 150 million UTI cases occur globally each year. Most people don't know they have one until the pain is unbearable — then it's an urgent care visit at 2am.</p>
+        <div class="problem-quote">"I'd pay almost anything to not go to urgent care on a Sunday night." — r/UrinaryTractInfections</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon icon-amber">💉</div>
+        <h3>Diabetes Monitoring is Invasive</h3>
+        <p>530 million people live with diabetes worldwide. Current monitoring requires daily finger pricks or expensive CGMs. Non-invasive glucose indicators have been inaccessible — until now.</p>
+        <div class="problem-quote">"I just want something passive that tells me when to call my doctor." — r/diabetes_t2</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon icon-blue">🏥</div>
+        <h3>Kidney Disease Goes Undetected</h3>
+        <p>1 in 7 adults has chronic kidney disease and most don't know it. Early detection via protein and creatinine levels can prevent dialysis — but lab tests cost $25–$80 each visit.</p>
+        <div class="problem-quote">"My doctor said monitor closely but gave me no tool to actually do that." — r/kidneydisease</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ──────────────────────────── -->
+<section id="how-it-works">
+  <div class="section-inner text-center">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Zero effort. Total insight.</h2>
+    <p class="section-sub">Urinova integrates into your existing bathroom routine without changing anything you do.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Mount Once</h3>
+        <p>Clip the device to your toilet rim or place it on the counter. One-time 60-second setup. No plumber required.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Use Normally</h3>
+        <p>The passive sensor cartridge captures a micro-sample every time you use the bathroom. Completely hands-free.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Get Insights</h3>
+        <p>Within 60 seconds, your results sync to the Urinova app via Bluetooth. AI surfaces what matters, when it matters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHAT IT TRACKS ────────────────────────── -->
+<section class="tracks" id="tracks">
+  <div class="section-inner text-center">
+    <div class="section-label" style="color:var(--teal-light)">Biomarkers</div>
+    <h2 class="section-title">Six health signals,<br>one device.</h2>
+    <p class="section-sub">Each metric is analyzed by a dedicated biosensor — no camera, no color interpretation errors.</p>
+    <div class="tracks-grid">
+      <div class="track-card">
+        <div class="track-icon">💧</div>
+        <div class="track-name">Hydration</div>
+        <div class="track-markers">pH · Specific Gravity</div>
+        <span class="track-badge badge-teal">Daily</span>
+      </div>
+      <div class="track-card">
+        <div class="track-icon">🦠</div>
+        <div class="track-name">UTI Detection</div>
+        <div class="track-markers">Nitrites · Leukocytes</div>
+        <span class="track-badge badge-amber">Alert</span>
+      </div>
+      <div class="track-card">
+        <div class="track-icon">🩸</div>
+        <div class="track-name">Glucose Screening</div>
+        <div class="track-markers">Urine Glucose · Ketones</div>
+        <span class="track-badge badge-teal">Daily</span>
+      </div>
+      <div class="track-card">
+        <div class="track-icon">🫘</div>
+        <div class="track-name">Kidney Health</div>
+        <div class="track-markers">Albumin · Creatinine</div>
+        <span class="track-badge badge-amber">Trend</span>
+      </div>
+      <div class="track-card">
+        <div class="track-icon">⚡</div>
+        <div class="track-name">Metabolic Health</div>
+        <div class="track-markers">Ketones · Metabolites</div>
+        <span class="track-badge badge-teal">Daily</span>
+      </div>
+      <div class="track-card">
+        <div class="track-icon">📈</div>
+        <div class="track-name">AI Trend Analysis</div>
+        <div class="track-markers">30/90-day patterns · Anomaly alerts</div>
+        <span class="track-badge badge-teal">Continuous</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES ──────────────────────────────── -->
+<section id="features">
+  <div class="section-inner">
+    <div class="features-grid">
+      <div class="feature-list">
+        <div class="section-label">The App</div>
+        <h2 class="section-title">Your health story,<br>in one place.</h2>
+        <div class="feature-item">
+          <div class="feature-dot">📊</div>
+          <div>
+            <h3>Daily Health Score</h3>
+            <p>A single 0–100 score synthesizes all your biomarkers into one number — so you know at a glance whether to act or relax.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot">🤖</div>
+          <div>
+            <h3>AI Coaching Layer</h3>
+            <p>Personalized recommendations based on your actual trends — not generic advice. If your albumin rises over 3 weeks, Urinova tells you before your doctor does.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot">🔔</div>
+          <div>
+            <h3>Real-Time Alerts</h3>
+            <p>Get notified the moment a reading falls outside your personal baseline — not population averages. Your body is unique.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot">🔒</div>
+          <div>
+            <h3>HIPAA-Compliant &amp; Private</h3>
+            <p>Your health data is encrypted end-to-end and never sold. Export to your doctor or share selectively — always your choice.</p>
+          </div>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <div class="app-mockup">
+          <div class="app-header">
+            <div class="app-title">Health Overview</div>
+            <div class="app-time">Today</div>
+          </div>
+          <div class="app-score-ring">
+            <div class="score-inner">
+              <div class="score-num">82</div>
+              <div class="score-label">Score</div>
+            </div>
+          </div>
+          <div class="app-metrics">
+            <div class="app-metric">
+              <span class="app-metric-name">Hydration</span>
+              <div class="app-metric-bar"><div class="app-metric-fill fill-green" style="width:90%"></div></div>
+              <span class="app-metric-val" style="color:#22C55E">Good</span>
+            </div>
+            <div class="app-metric">
+              <span class="app-metric-name">UTI Risk</span>
+              <div class="app-metric-bar"><div class="app-metric-fill fill-teal" style="width:10%"></div></div>
+              <span class="app-metric-val" style="color:#14B8A8">Low</span>
+            </div>
+            <div class="app-metric">
+              <span class="app-metric-name">Glucose</span>
+              <div class="app-metric-bar"><div class="app-metric-fill fill-blue" style="width:55%"></div></div>
+              <span class="app-metric-val" style="color:#60A5FA">OK</span>
+            </div>
+            <div class="app-metric">
+              <span class="app-metric-name">Kidney</span>
+              <div class="app-metric-bar"><div class="app-metric-fill fill-amber" style="width:70%"></div></div>
+              <span class="app-metric-val" style="color:#F59E0B">Watch</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VS TABLE ──────────────────────────────── -->
+<section class="vs" id="compare">
+  <div class="section-inner text-center">
+    <div class="section-label">Why Urinova</div>
+    <h2 class="section-title">No one else does all of this.</h2>
+    <p class="section-sub">Every competitor makes you choose between cost, accuracy, or convenience. Urinova doesn't.</p>
+    <div class="vs-table-wrap">
+      <table class="vs-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="highlight">Urinova</th>
+            <th>Withings U-Scan</th>
+            <th>Vivoo</th>
+            <th>Lab Test</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hands-free / passive</td>
+            <td class="highlight"><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td>UTI detection</td>
+            <td class="highlight"><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Kidney health markers</td>
+            <td class="highlight"><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Bluetooth accuracy (no camera)</td>
+            <td class="highlight"><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>AI trend analysis</td>
+            <td class="highlight"><span class="check">✓</span></td>
+            <td><span class="partial">Basic</span></td>
+            <td><span class="partial">Basic</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td>Device price</td>
+            <td class="highlight"><strong>$249</strong></td>
+            <td>$499</td>
+            <td>Free</td>
+            <td>$25–$80/visit</td>
+          </tr>
+          <tr>
+            <td>Ongoing cost</td>
+            <td class="highlight"><strong>$14.99/mo</strong></td>
+            <td>$10/mo + strips</td>
+            <td>$14.99/mo + strips</td>
+            <td>$25–$80/visit</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ───────────────────────────────── -->
+<section id="pricing">
+  <div class="section-inner text-center">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Simple, transparent pricing.</h2>
+    <p class="section-sub">One device. Two ways to own it. No hidden fees — your data is yours either way.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="plan-name">Premium</div>
+        <div class="plan-price">$449<span> once</span></div>
+        <div class="plan-sub-price">All AI features included forever</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Urinova device (lifetime)</li>
+          <li>All 6 biomarker sensors</li>
+          <li>AI insights &amp; trend analysis included</li>
+          <li>No monthly subscription</li>
+          <li>Replacement cartridges at cost</li>
+          <li>Free firmware updates</li>
+        </ul>
+        <div class="plan-cta">
+          <button class="btn-outline" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Join Waitlist</button>
+        </div>
+      </div>
+      <div class="pricing-card featured">
+        <div class="featured-tag">Popular</div>
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">$249<span> once</span></div>
+        <div class="plan-sub-price">+ $14.99/month AI subscription</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Urinova device</li>
+          <li>All 6 biomarker sensors</li>
+          <li>30-day free trial included</li>
+          <li>AI coaching &amp; alerts</li>
+          <li>Auto-ship cartridge option</li>
+          <li>Cancel anytime</li>
+        </ul>
+        <div class="plan-cta">
+          <button class="btn-teal" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Join Waitlist →</button>
+        </div>
+      </div>
+    </div>
+    <p class="fsa-note">💳 <strong>FSA/HSA eligible</strong> — pay with pre-tax dollars and save up to 40%</p>
+  </div>
+</section>
+
+<!-- ── FAQ ──────────────────────────────────── -->
+<section class="faq" id="faq">
+  <div class="section-inner text-center">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Common questions.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How accurate is Urinova compared to a lab test?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Urinova uses dedicated electrochemical biosensors — the same sensor technology used in clinical-grade analyzers — rather than camera-based color interpretation. Our target accuracy is ≥95% first-read reliability. We are pursuing FDA 510(k) clearance for diagnostic claims. Until clearance is obtained, Urinova is intended as a wellness screening tool to help you decide when to see a doctor — not to replace clinical diagnosis.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How do the cartridges work? How often do I replace them?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Each cartridge contains 30 days of sensor material for a typical household (1–2 users, ~8 readings/day). Cartridges slide in and out in under 10 seconds — no tools, no mess. We offer auto-ship so you never run out. Each pack is $30.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is my health data private and secure?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Yes. Your data is encrypted end-to-end using AES-256 and stored in HIPAA-compliant cloud infrastructure. We do not sell, share, or use your data for advertising. You own your data — export it anytime as a PDF or CSV. You can also delete your entire history with one tap.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Will it fit my toilet?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Urinova is designed to fit 95% of standard residential toilet bowls (round and elongated). It clips to the inner rim with an adjustable bracket — no permanent installation, no tools, no plumber. It works with all standard toilet seat designs and does not interfere with normal toilet use.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          When will Urinova ship?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">We are currently in the prototype and clinical validation phase. Waitlist members will be first to receive units and will receive early-access pricing when pre-orders open. We are targeting a Kickstarter campaign in 2025. Join the waitlist to stay updated and lock in your early-access rate.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I use Urinova if I have diabetes or kidney disease?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Urinova is designed with chronic disease monitoring in mind and many of our beta testers have diabetes or CKD. However, until FDA clearance is obtained, Urinova is a wellness screening device — not a medical device. It should complement, not replace, your existing medical monitoring and doctor visits. Always consult your physician before changing your care routine.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ───────────────────────────────────── -->
+<section class="cta-section" id="waitlist">
+  <div class="section-title" style="margin-bottom:0">Be the first to know<br>when we launch.</div>
+  <p class="section-sub">Join 500+ people on the waitlist. Early access pricing. No commitment.</p>
+  <div class="cta-form">
+    <input type="email" id="cta-email" placeholder="your@email.com" />
+    <button class="btn-primary" onclick="submitWaitlist('cta-email', 'cta-success')">Reserve My Spot →</button>
+  </div>
+  <div class="success-msg" id="cta-success" style="max-width:400px;margin:16px auto 0">You're on the list! We'll email you when pre-orders open.</div>
+  <p class="cta-note">No spam. Unsubscribe anytime. Early access = 20% off launch price.</p>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Uri<span>nova</span></div>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#tracks">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="mailto:hello@urinova.co">Contact</a>
+    </div>
+    <p>© 2026 Urinova. All rights reserved.<br>
+    Urinova is a wellness device and is not intended to diagnose, treat, cure, or prevent any disease.<br>
+    Not yet FDA cleared. Seeking 510(k) clearance for diagnostic use.</p>
+  </div>
+</footer>
+
+<script>
+  // ── Waitlist form ─────────────────────────
+  function submitWaitlist(inputId, successId) {
+    const email = document.getElementById(inputId).value;
+    const success = document.getElementById(successId);
+    if (!email || !email.includes('@')) {
+      document.getElementById(inputId).style.borderColor = '#EF4444';
+      setTimeout(() => document.getElementById(inputId).style.borderColor = '', 2000);
+      return;
+    }
+    // TODO: Replace with your Formspree endpoint
+    // fetch('https://formspree.io/f/YOUR_FORM_ID', { method:'POST', body: JSON.stringify({email}), headers:{'Content-Type':'application/json'} })
+    document.getElementById(inputId).style.display = 'none';
+    success.style.display = 'block';
+    // If there's a button next to the input, hide it too
+    const btn = document.getElementById(inputId).nextElementSibling;
+    if (btn) btn.style.display = 'none';
+  }
+
+  // ── FAQ accordion ─────────────────────────
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // ── Mobile menu ───────────────────────────
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    if (links.style.display === 'flex') {
+      links.style.display = '';
+    } else {
+      links.style.display = 'flex';
+      links.style.flexDirection = 'column';
+      links.style.position = 'absolute';
+      links.style.top = '64px';
+      links.style.left = '0';
+      links.style.right = '0';
+      links.style.background = 'white';
+      links.style.padding = '16px 24px 24px';
+      links.style.borderBottom = '1px solid #E2E8F0';
+      links.style.boxShadow = '0 8px 20px rgba(0,0,0,0.08)';
+    }
+  }
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      const links = document.querySelector('.nav-links');
+      links.style.display = '';
+    });
+  });
+
+  // ── Smooth nav highlight ──────────────────
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--navy)' : '';
+    });
+  });
+</script>
+
+</body>
+</html>
