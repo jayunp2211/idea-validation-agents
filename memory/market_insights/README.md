@@ -46,3 +46,5 @@ Analyses older than 6 months should be flagged `status: stale`. Re-run `trend-an
 | File | Niche | Platform | Period | Status |
 |---|---|---|---|---|
 | [nutrition-tiktok-2026-04.md](nutrition-tiktok-2026-04.md) | nutrition | tiktok | April 2026 | fresh |
+| [home-urinalysis-apps-2026-05.md](home-urinalysis-apps-2026-05.md) | home diagnostics / urinalysis / smart health monitoring companion apps | apps | May 2026 | fresh |
+| [home-urinalysis-tiktok-2026-05.md](home-urinalysis-tiktok-2026-05.md) | smart home urinalysis / home health diagnostics / urine health monitoring | tiktok | May 2026 | fresh |
