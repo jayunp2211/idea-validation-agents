@@ -996,13 +996,23 @@
       setTimeout(() => document.getElementById(inputId).style.borderColor = '', 2000);
       return;
     }
-    // TODO: Replace with your Formspree endpoint
-    // fetch('https://formspree.io/f/YOUR_FORM_ID', { method:'POST', body: JSON.stringify({email}), headers:{'Content-Type':'application/json'} })
-    document.getElementById(inputId).style.display = 'none';
-    success.style.display = 'block';
-    // If there's a button next to the input, hide it too
-    const btn = document.getElementById(inputId).nextElementSibling;
-    if (btn) btn.style.display = 'none';
+    fetch('https://formspree.io/f/xkoeqgdr', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.ok || data.next) {
+        document.getElementById(inputId).style.display = 'none';
+        const btn = document.getElementById(inputId).nextElementSibling;
+        if (btn) btn.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    })
+    .catch(() => alert('Network error. Please try again.'));
   }
 
   // ── FAQ accordion ─────────────────────────
