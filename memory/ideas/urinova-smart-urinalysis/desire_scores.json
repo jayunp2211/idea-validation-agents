@@ -1,0 +1,15 @@
+{
+  "scores": {
+    "survival": 5,
+    "status": 3,
+    "belonging": 1,
+    "control": 5,
+    "curiosity": 4
+  },
+  "primary_driver": "survival",
+  "secondary_driver": "control",
+  "desire_strength": 3.6,
+  "desire_strength_label": "strong",
+  "virality_potential": "low",
+  "notes": "Survival scores a 5 anchored to the UTI-prone and chronic disease segments. Recurring UTI pain is acute, debilitating, and fear-laden — users actively seek anything that prevents the next episode. Diabetics face life-threatening glucose dysregulation and kidney disease patients face organ failure risk; these are existential health stakes, not wellness preferences. Control also scores a 5: the dominant emotional experience of chronic disease is helplessness and uncertainty — Urinova's real-time continuous monitoring directly addresses that by giving patients agency and early warning. These two dimensions together form a powerful, emotionally intense dual driver. Curiosity scores a 4 driven by the biohacker/keto/health-optimization segment, which seeks daily metabolic data feedback; this segment may be the loudest early adopters but is lower-pain than chronic patients. Status scores a 3: a 'biohacker identity' component exists (comparable to CGM wearers or Oura Ring users), but health data is not publicly displayed — it is consumed privately — dampening the status signal. Belonging scores a 1: urinalysis is inherently solitary and private; there is no shared ritual or community experience built into the product. Virality is low because the dominant use cases (UTI detection, diabetes monitoring, kidney health) involve deeply sensitive health data that users are strongly unlikely to share publicly. The biohacker segment has marginally higher sharing propensity, but it is a minority segment. The product's desire profile is clinical and acute, not social or aspirational — strong pull-through demand, weak word-of-mouth amplification."
+}
