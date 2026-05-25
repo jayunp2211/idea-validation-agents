@@ -1,0 +1,266 @@
+{
+  "idea_slug": "clarifi-smart-urinalysis",
+  "product": "Clarifi — Smart AI-Powered Urinalysis Device",
+  "scored_at": "2026-05-25",
+  "skill_version": "0.2.0",
+
+  "dimension_scores": {
+    "demand": 79,
+    "competition": 85,
+    "monetization": 90,
+    "distribution": 35,
+    "retention": 53,
+    "founder_market_fit": 50
+  },
+
+  "dimension_score_rationale": {
+    "demand": {
+      "score": 79,
+      "base_range": "60–79 (desire_strength_label = 'strong' + trend_velocity = 'rising')",
+      "adjustments": "+10 cross-platform resonance confirmed (Reddit, TikTok, web-search, Apps — 4 independent platforms all confirm growing demand signal)",
+      "sources": ["desire_scores.json: desire_strength_label='strong', desire_strength=3.6, primary_driver=survival, secondary_driver=control", "market_insights: metabolichealth +150–200% TikTok views, UTI community growth, GLP-1 segment rising fast confirmed web-search and TikTok files"],
+      "cap_note": "Capped at 79 rather than 80–100 because trend velocity is 'rising' not 'rising-fast'. The GLP-1/Ozempic sub-segment is rising-fast but the broader urinalysis product category trend is rising — the aggregate signal does not justify the top band.",
+      "flags": []
+    },
+    "competition": {
+      "score": 85,
+      "base_range": "75–100 (market_saturation = 'low', clear positioning gaps, no dominant incumbent)",
+      "adjustments": "+10 top competitor complaints reveal clearly unserved pain (Vivoo: camera misread inaccuracy is #1 complaint; Withings U-Scan: limited analyte coverage + $499 price as #1 barrier; these directly map to Clarifi's addressable gap)",
+      "sources": ["competitors.json: market_saturation='low', saturation_score total 11/25, 6 positioning_gaps identified, direct_competitor_count=2 meaningful consumer-facing competitors"],
+      "cap_note": "Scored 85 rather than higher to reflect two concrete near-term threats: Withings U-Scan v2 (high probability, 12–24 months) and a well-funded YC-class entrant (medium probability). These do not negate the current opportunity but cap how aggressively 'opportunity-clear' the landscape is.",
+      "flags": ["FAANG penalty not applied: Apple smart toilet threat is low-medium probability in 3-year window, not current — no penalty warranted"]
+    },
+    "monetization": {
+      "score": 90,
+      "base_range": "80–100 (LTV:CAC ≥ 3:1 on 2+ channels + WTP ≥ $5/mo + viable SOM implied)",
+      "adjustments": "+10 freemium_conversion_estimate = 0.65 (65% subscription conversion from device owners, well above the 5% threshold); no +5 market_size_verdict because market_size.json is missing",
+      "sources": [
+        "cac.json: LTV:CAC ≥ 3:1 on ALL 7+ channels modeled (Reddit 15:1–45:1, TikTok 15:1–30:1, Kickstarter 7:1–11:1, Amazon 6:1–11:1, creator 5:1–7:1, Google 3.5:1–5.7:1, Meta 3:1–5:1); viability_verdict='VIABLE WITH CONDITIONS'",
+        "pricing.json: WTP target = $14.99/month; blended 24-month LTV = $818; recommended_price.monthly = $14.99",
+        "pricing.json: freemium_conversion_estimate = 0.65"
+      ],
+      "cap_note": "Scored 90 rather than 95–100 to respect the explicit caveat in cac.json: all ratios are pre-PMF projections contingent on unvalidated hardware reliability, subscription conversion rate, and D30 retention. The unit economics are structurally excellent but not yet empirically confirmed.",
+      "flags": ["market_size.json missing — +5 market_size_verdict adjustment not applied"]
+    },
+    "distribution": {
+      "score": 35,
+      "base_range": "15–39 (distribution_verdict = 'weak')",
+      "adjustments": "Scored at UPPER end of weak range per scoring instructions: distribution weakness is hardware-inherent (capital, manufacturing, logistics), not a concept flaw. creator_economy_fit = HIGH, multiple viable organic channels confirmed (Reddit, TikTok, Kickstarter), LTV:CAC ratios are excellent across organic channels. No +10 founder audience edge (no user_profile.md).",
+      "sources": ["distribution.json: distribution_verdict='weak', creator_economy_fit='high', viral_loop_exists=false, k_factor_estimate=0.15, paid_feasibility='marginal', aso_score_out_of_50=34"],
+      "cap_note": "Scored 35 rather than 38–39 because: (1) no viral loop at all (k=0.15, sub-viral); (2) paid feasibility is explicitly 'marginal' with $8K/month minimum; (3) hardware distribution requires prototype before any channel is actionable — the best channels (Kickstarter, Amazon) are functionally inaccessible at concept stage; (4) no founder distribution edge from user profile. A score of 35 reflects genuine organic channel potential held back by structural hardware barriers and execution stage.",
+      "flags": ["Hardware distribution inherently harder than app distribution — 'weak' verdict does not imply concept weakness", "No user profile: +10 founder audience edge adjustment not applied"]
+    },
+    "retention": {
+      "score": 53,
+      "base_range": "40–59 (retention_verdict = 'moderate', D30 = 38% which is well above the 8% floor for this range)",
+      "adjustments": "+5 natural_usage_frequency = 'multiple daily' (biological urination reflex 6–8x/day is the strongest external trigger class; clearly qualifies as daily and beyond)",
+      "sources": [
+        "retention.json: retention_verdict='moderate', d30=38%, d7=55%, d1=72%, habit_formation_score=7, natural_usage_frequency='multiple daily'",
+        "retention.json: churn_risk='medium', bifurcated segment retention (chronic disease D30=78%, subscription_12mo=72% vs. UTI episodic D30=25%, subscription_12mo=18%)"
+      ],
+      "cap_note": "Scored 53 (mid-range of 40–59) because: D30 of 38% is strong for a 'moderate' verdict, earning positioning in upper half of the range. However, the blended 12-month subscription retention of 31% — driven by the UTI episodic segment's 18% — is a significant drag. The retention profile is genuinely bifurcated: sticky for chronic disease, disposable for episodic UTI. The moderate verdict is honest. Habit formation score of 7 and the biological trigger earn mid-upper positioning but not the ceiling.",
+      "flags": ["Bifurcated retention profile: chronic disease segment (72% D30, 72% 12-month sub) is sticky; UTI episodic (25% D30, 18% 12-month sub) is disposable. Blended score appropriately reflects the mixed population."]
+    },
+    "founder_market_fit": {
+      "score": 50,
+      "base_range": "N/A — default applied",
+      "adjustments": "None — no user profile available",
+      "sources": ["user_profile.md: MISSING"],
+      "cap_note": "Default 50 (neutral) applied per skill specification when user_profile.md is unavailable.",
+      "flags": ["MISSING: user_profile.md not found. Founder-market fit score is a neutral placeholder. This dimension is underevaluated — actual score could be significantly higher or lower depending on founder's domain expertise (medical device engineering, hardware, health tech) and existing distribution advantages. Re-score after completing user-background-interviewer."]
+    }
+  },
+
+  "weights_applied": {
+    "demand": 0.20,
+    "competition": 0.10,
+    "monetization": 0.20,
+    "distribution": 0.20,
+    "retention": 0.15,
+    "founder_market_fit": 0.15
+  },
+
+  "scoring_computation": {
+    "weighted_contributions": {
+      "demand": 15.80,
+      "competition": 8.50,
+      "monetization": 18.00,
+      "distribution": 7.00,
+      "retention": 7.95,
+      "founder_market_fit": 7.50
+    },
+    "base_score": 64.75,
+    "floor_penalty": 1.0,
+    "floor_penalty_note": "No dimension scored below 25. Distribution scored 35, which is above the 25-floor threshold. The floor penalty does NOT trigger. No multiplicative penalty applied.",
+    "killer_dimensions_triggered": [],
+    "missing_discount_numerator": 6,
+    "missing_discount_denominator": 7,
+    "missing_discount": 0.857,
+    "missing_discount_note": "6 of 7 dimensions have source data. market_size.json is missing. Discount = 6/7 = 0.857.",
+    "adjusted_score_pre_round": 55.49,
+    "final_score_formula": "64.75 × 1.0 × 0.857 = 55.49 → rounds to 55"
+  },
+
+  "final_score": 55,
+  "verdict": "test",
+  "verdict_meaning": "Promising but unproven. Run the RAT experiment first before committing to build.",
+  "score_confidence": "high",
+  "score_confidence_note": "6 of 7 dimensions have source data. Confidence is HIGH per the 6–7 of 7 threshold. The single missing input (market_size.json) would most likely strengthen the monetization dimension (+5 if large SOM confirmed) but would not change the verdict tier.",
+
+  "missing_inputs": [
+    {
+      "file": "market_size.json",
+      "impact": "Would add +5 to monetization score if market_size_verdict = 'large'. Estimated effect on final_score: +0.85 points after discount. Would not change verdict.",
+      "priority": "medium — run tam-sam-som-builder to complete the picture before decision-memo"
+    },
+    {
+      "file": "user_profile.md",
+      "impact": "Founder-market fit is currently at neutral default (50). Actual score could range from 25 to 90 depending on founder's background in medical device hardware, health tech, or software engineering. A score of 75 would add ~2.5 points to the final score; a score of 25 would subtract ~2.5 points. More importantly, a score below 25 (no domain overlap, no hardware experience, beginner tier) would TRIGGER the floor penalty multiplicatively — potentially dropping the final score from 55 to the 35–45 range and changing the verdict to 'pivot'.",
+      "priority": "CRITICAL — run user-background-interviewer before decision-memo. Founder-market fit in hardware medtech is a potential killer dimension if the founder has no engineering, hardware, or healthcare experience."
+    },
+    {
+      "file": "complexity.json",
+      "impact": "Complexity scoring is not part of the standard 7 dimensions and is not weighted in the base score. Would provide additional qualitative context about build risk.",
+      "priority": "low"
+    },
+    {
+      "file": "weighted_signals.json",
+      "impact": "Would refine demand score with quantitative market signal weighting. Estimated impact: minor adjustment within the 60–79 demand range.",
+      "priority": "low"
+    }
+  ],
+
+  "top_strengths": [
+    {
+      "dimension": "monetization",
+      "score": 90,
+      "reason": "Exceptional unit economics across every acquisition channel modeled. LTV:CAC ≥ 3:1 on all 7 channels including worst-case paid social (Meta 3:1). Three-stream revenue architecture (hardware $249 + subscription $14.99/mo + consumables $20/mo) produces a blended 24-month LTV of $818 for chronic disease users. Subscription conversion from device owners at 65% is justified by hardware gate psychology and 30-day trial design. The $14.99/mo subscription price is anchored to a 1.43× desire premium (Survival + Control dual driver) and confirmed within category bounds. Payback period across lean-tier channels is 0.6–2.1 months — category-leading for hardware DTC."
+    },
+    {
+      "dimension": "competition",
+      "score": 85,
+      "reason": "Low market saturation (11/25 saturation score) with no dominant consumer-facing incumbent. The passive hardware + multi-biomarker + UTI detection + AI interpretation combination is genuinely unoccupied — no existing product delivers all four simultaneously. Vivoo's #1 user complaint (camera inaccuracy) and Withings U-Scan's #1 complaint (limited analytes + $499 price) map directly to Clarifi's claimed differentiators. Six validated positioning gaps with revenue opportunity rated 'high' or 'very high'. The smart-device keyword cluster has near-zero SERP competition. Moat-building path (FDA clearance, clinical partnerships, AI data accumulation) is realistic if executed within the 2–4 year window before Apple/Withings v2 escalation."
+    }
+  ],
+
+  "top_weaknesses": [
+    {
+      "dimension": "distribution",
+      "score": 35,
+      "reason": "Hardware distribution is categorically more capital-intensive, slower, and higher-risk than app distribution. No structural viral loop (k=0.15, sub-viral). Paid acquisition is 'marginal' — Meta health ad restrictions and Google YMYL barriers limit pre-clearance paid channels. No distribution infrastructure exists: the best channels (Kickstarter, Amazon DTC) require a working prototype that is 18+ months away per the founder's own roadmap. While creator economy fit is high and organic channels are viable, the hardware logistics gap means every channel is theoretical until manufacturing and fulfilment are solved. The distribution story is 'hard but navigable' not 'broken' — but the constraint is real and will dominate early execution for 12–24 months."
+    },
+    {
+      "dimension": "founder_market_fit",
+      "score": 50,
+      "reason": "Score is a neutral default — user_profile.md is missing. This is flagged as the single most important missing input because Clarifi requires extremely rare founder capabilities: hardware engineering OR medical device regulatory expertise OR health tech domain knowledge. An indie developer without any of these domains faces compounded execution risk across biosensor engineering, FDA 510(k) navigation, hardware manufacturing, supply chain, and HIPAA/GDPR compliance simultaneously. If founder background lacks hardware and healthcare domain depth, this dimension could realistically score 20–30 — which would trigger the floor penalty and collapse the final score. Run user-background-interviewer before committing further analysis or resources."
+    }
+  ],
+
+  "killer_dimensions": [],
+
+  "riskiest_assumption_test": {
+    "assumption": "Biosensor hardware will achieve >95% first-read accuracy at the $249 consumer price point",
+    "category": "distribution",
+    "criticality": 5,
+    "uncertainty": 5,
+    "rat_score": 25,
+    "rat_selection_rationale": "This assumption is the existential product promise. Clarifi's entire competitive narrative — 'replace camera-guessing with Bluetooth accuracy' — depends on the device delivering reliable, consistent readings on the first attempt. If biosensor accuracy at consumer-grade price points is materially below 95%: (1) the primary differentiator vs. Vivoo (camera accuracy) disappears; (2) every other product claim (UTI detection, kidney monitoring, diabetes screening) becomes worthless without reliable sensor readings; (3) the retention model collapses — the single largest churn risk identified in retention.json is a 'failed first session'; (4) the CAC economics collapse because paid/creator channels cannot survive the 1-star review cascade that follows a hardware accuracy failure at launch. No other assumption has equal criticality × uncertainty — subscription conversion (C5×U4=20) and FDA timeline (C5×U4=20) are also critical but are second-order risks: if the hardware doesn't work, subscription conversion and regulatory pathway are moot. The FDA timeline risk (assumption 3) is actually catastrophically uncertain and could kill the business independently, but it is not testable cheaply in 2 weeks — it requires regulatory counsel and a clinical trial plan, not a $100 experiment. Assumption 1 (hardware accuracy) IS testable via proxy.",
+    "experiment": {
+      "type": "WTP validation with accuracy-disclosure condition",
+      "description": "Create a landing page (Carrd, $0–$19/month) that presents Clarifi's product concept with explicit accuracy messaging. Version A: 'Bluetooth-connected accuracy — tested to 97% first-read reliability in laboratory conditions.' Version B: 'Smart home urinalysis device — accuracy validation in progress.' Run 50 targeted Reddit posts across r/UrinaryTractInfections, r/kidneydisease, r/keto, and r/Biohacking with a 'Would you back this?' link. On the landing page, show the $249 device price and a 'Join Waitlist' button (email capture) and a 'Pre-order at Kickstarter Early-Bird Price ($149)' button (payment intent). Do NOT charge — this is intent capture only. The experiment measures whether purchase intent is contingent on validated accuracy claims (Version A outperforms B significantly) or whether the demand is strong enough that unvalidated accuracy doesn't suppress intent (Version B performs comparably). Key secondary signal: filter waitlist signups by the question 'What would you primarily use this for?' to identify segment mix (UTI vs. chronic disease vs. biohacker). This directly tests the proxy: not whether the sensor achieves 95% accuracy (impossible to test at $100), but whether the purchasing segment requires proven accuracy to commit — which tells you whether the assumption's failure would be fatal at launch or recoverable with a credible clinical validation promise.",
+      "duration": "14 days",
+      "estimated_cost": "$19 (Carrd landing page subscription, 1 month) + $0 organic Reddit + optional $50 Reddit Ads for r/UrinaryTractInfections beta recruitment = $19–$69 total. Well within $100 constraint.",
+      "pass_threshold": "Version A achieves ≥ 8% email capture rate from ≥ 100 unique visitors AND Version B achieves ≥ 5% email capture rate. BOTH passing signals confirm: (1) strong demand exists independent of validated accuracy (Version B ≥ 5%), AND (2) validated accuracy amplifies conversion materially (Version A outperforms). If ONLY Version A achieves ≥ 8% and Version B < 3%: the assumption is confirmed critical — purchasing is contingent on proven accuracy, and hardware validation must precede any public launch. If NEITHER version achieves ≥ 5%: demand signal is weaker than modeled and the idea requires re-evaluation of target segment or product concept.",
+      "pass_definition": "Version B achieves ≥ 5% email capture rate from ≥ 100 targeted visitors within 14 days. This is the minimum bar — it confirms demand exists even without validated accuracy, reducing the existential risk of assumption 1 failing.",
+      "fail_action": "pivot",
+      "fail_action_rationale": "If Version B (unvalidated accuracy) captures < 3% from ≥ 100 visitors, users require proven accuracy before expressing any purchase intent. This means the product cannot be launched without clinical validation data — which requires 12–24 months and $50K–$500K, fundamentally changing the business model and capital requirements. At that point, the indie/bootstrap path is closed and the idea requires institutional funding or a fundamental pivot to a lower-accuracy, lower-claim wellness product."
+    },
+    "all_assumptions_ranked": [
+      {
+        "assumption": "Biosensor hardware will achieve >95% first-read accuracy at $249 consumer price point",
+        "category": "competition",
+        "criticality": 5,
+        "uncertainty": 5,
+        "rat_score": 25,
+        "notes": "The entire competitive differentiator rests on this. Cannot be tested at $100 — proxy experiment tests purchase contingency on accuracy validation instead."
+      },
+      {
+        "assumption": "65% of device owners will convert to $14.99/month subscription after free trial",
+        "category": "monetization",
+        "criticality": 5,
+        "uncertainty": 4,
+        "rat_score": 20,
+        "notes": "The LTV model producing all those EXCELLENT LTV:CAC ratios depends on this rate. At 30% conversion (half the estimate), blended LTV drops from $459 to ~$334, tightening all ratios and potentially making paid channels unviable. Testable post-Kickstarter via cohort analysis of first 500 device buyers."
+      },
+      {
+        "assumption": "FDA Class II 510(k) clearance is achievable within 24 months at startup budget",
+        "category": "distribution",
+        "criticality": 5,
+        "uncertainty": 4,
+        "rat_score": 20,
+        "notes": "FDA Class II process for diagnostic devices typically takes 3–5 years and $500K–$2M+ per claim (per idea.md). The founder's own risk list acknowledges this. Without FDA clearance: (a) paid advertising channels remain constrained; (b) insurance reimbursement is inaccessible; (c) medical-grade accuracy framing is not legally supportable; (d) hospital/clinic B2B channel is closed. This is a slow-moving catastrophic risk — it won't kill the first Kickstarter campaign but could prevent the business from scaling. Not testable in 2 weeks for $100; requires regulatory counsel consultation (~$500–$2,000 for a 1-hour FDA strategy call with a regulatory consultant)."
+      },
+      {
+        "assumption": "UTI/CKD/diabetes target segments will accept $249+ hardware cost with ongoing subscription",
+        "category": "monetization",
+        "criticality": 4,
+        "uncertainty": 3,
+        "rat_score": 12,
+        "notes": "Partially de-risked by evidence: UTI community ('I'd pay almost anything to not have to go to urgent care at 2am on a Sunday'), CGM analogue proving medical device hardware purchase willingness, and the $799+ CGM accessory ecosystem. However, pre-FDA-clearance positioning limits the medical-necessity framing that justifies premium pricing — wellness-positioned products face higher price sensitivity. Testable cheaply via the RAT landing page experiment above (Version A/B price test)."
+      },
+      {
+        "assumption": "The passive/hands-free collection mechanism works reliably across a range of toilet geometries and user body types",
+        "category": "distribution",
+        "criticality": 4,
+        "uncertainty": 4,
+        "rat_score": 16,
+        "notes": "Withings U-Scan's top 1-star complaint: 'Only fits certain toilet rim shapes; many users returned it immediately after geometry incompatibility.' This is a hardware design risk specific to the passive collection form factor. Not testable without a physical prototype — but this assumption should be elevated to top-3 concern once a prototype exists. For a concept-stage evaluation, scored below hardware accuracy because geometry failure is a design problem with engineering solutions, whereas sensor accuracy at cost is a materials science and supply chain problem with less clear solutions."
+      },
+      {
+        "assumption": "The AI coaching layer delivers genuinely personalized, non-generic insights that users find valuable after the novelty period",
+        "category": "retention",
+        "criticality": 4,
+        "uncertainty": 3,
+        "rat_score": 12,
+        "notes": "Vivoo's #2 complaint (after camera accuracy) is that AI advice is generic wellness tips, not personalized to the user's actual data history. This is the software moat that justifies the subscription — if the AI layer is 'just another wellness chatbot,' the subscription LTV model collapses for the biohacker and wellness segments. The chronic disease segment retains regardless; the wider subscription funnel depends on AI quality. Testable via a concierge-AI mockup (manual human-generated 'AI' interpretations for 10–15 beta users over 14 days) — but this requires a prototype device, so not testable at pure concept stage."
+      },
+      {
+        "assumption": "Recurrent UTI sufferers will monitor daily during asymptomatic periods (not just during/after episodes)",
+        "category": "retention",
+        "criticality": 3,
+        "uncertainty": 4,
+        "rat_score": 12,
+        "notes": "Retention.json explicitly identifies episodic-UTI segment inter-episode apathy as a 'high' severity churn risk: users churn within 90 days of UTI resolution. If asymptomatic monitoring adoption is low, the UTI segment becomes a hardware-sale-only channel (LTV ~$280) rather than a subscription channel — the business still works but the TAM for the subscription LTV model shrinks meaningfully. Testable via the landing page experiment by asking waitlist signups: 'Would you use this every day, or mainly when you think you might have a UTI?'"
+      }
+    ]
+  },
+
+  "scoring_summary": {
+    "headline": "Strong market signal, excellent unit economics, and a real positioning gap — held back by hardware distribution execution risk and an unvalidated founder fit.",
+    "three_line_brief": "Clarifi addresses a genuine, high-intensity health problem (UTI, CKD, diabetes monitoring) in a low-saturation hardware category where no incumbent has closed the four-feature combination it targets. Unit economics on paper are exceptional — LTV:CAC ratios of 5:1–30:1 across lean-tier channels with a $818 24-month LTV for the chronic disease segment. The test verdict reflects two structural uncertainties: hardware distribution is 12–24 months from being actionable, and the riskiest assumption (biosensor accuracy at consumer price points) has zero validation data — a fact that can be partially de-risked in 14 days for under $100 before any further resource commitment.",
+    "score_trajectory_note": "Completing user_profile.md (user-background-interviewer) is the highest-leverage next action — if founder has hardware, regulatory, or medical device experience, founder_market_fit could rise from 50 to 75–85, adding 3–5 points to the final score and potentially moving it into 'test' at 58–60. Conversely, if founder lacks all hardware/healthcare domain experience, the dimension could score 20–30 and trigger the floor penalty, dropping the final score into the 'pivot' zone. This single unknown introduces more variance than any other missing input."
+  },
+
+  "metadata": {
+    "skill": "idea-scoring",
+    "inputs_consumed": [
+      "memory/ideas/clarifi-smart-urinalysis/idea.md",
+      "memory/ideas/clarifi-smart-urinalysis/desire_scores.json",
+      "memory/ideas/clarifi-smart-urinalysis/competitors.json",
+      "memory/ideas/clarifi-smart-urinalysis/pricing.json",
+      "memory/ideas/clarifi-smart-urinalysis/cac.json",
+      "memory/ideas/clarifi-smart-urinalysis/distribution.json",
+      "memory/ideas/clarifi-smart-urinalysis/retention.json"
+    ],
+    "inputs_missing": [
+      "memory/ideas/clarifi-smart-urinalysis/market_size.json",
+      "memory/user_profile.md",
+      "memory/ideas/clarifi-smart-urinalysis/complexity.json",
+      "memory/ideas/clarifi-smart-urinalysis/weighted_signals.json"
+    ],
+    "floor_penalty_triggered": false,
+    "available_dimensions_count": 6,
+    "total_dimensions_count": 7,
+    "missing_discount_applied": 0.857
+  }
+}

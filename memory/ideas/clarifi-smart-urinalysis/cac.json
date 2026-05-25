@@ -1,0 +1,549 @@
+{
+  "skill": "cac-modeler",
+  "idea_slug": "clarifi-smart-urinalysis",
+  "generated_at": "2026-05-25",
+  "product": "Clarifi — Smart AI-Powered Urinalysis Device",
+
+  "analyst_assumptions": {
+    "founder_tier": "lean",
+    "tier_source": "No user profile exists. Treating founder as lean tier: budget unknown, early-stage hardware startup, concept stage. All channel feasibility verdicts and budget thresholds are adjusted downward accordingly.",
+    "ltv_model_used": "blended_hardware_plus_subscription",
+    "arpu_model": "ARPU_monthly uses subscription-only ($14.99) for base LTV model; full blended ARPU ($34.99 including consumables) used for payback period calculation as stated in skill inputs. Consumables treated as second revenue stream.",
+    "confidence_level": "medium",
+    "confidence_note": "Hardware CAC benchmarks are analyst estimates from analogous categories (hardware DTC, Kickstarter campaigns, creator seeding programs). No primary data for this specific device category. All figures marked [ESTIMATED] unless sourced from competitor disclosures or public data."
+  },
+
+  "ltv_inputs": {
+    "hardware_ltv_contribution": {
+      "value": 249,
+      "currency": "USD",
+      "note": "One-time hardware purchase at recommended subscription-bundle SKU price. Source: pricing.json recommended_price.subscription_bundle_sku.",
+      "source": "pricing.json"
+    },
+    "subscription_ltv": {
+      "arpu_monthly_sub_only": 14.99,
+      "blended_d30_retention_pct": 38,
+      "average_lifespan_months_blended": 14,
+      "subscription_ltv_blended": 209.86,
+      "subscription_ltv_rounded": 210,
+      "formula": "$14.99/month × 14 months average lifespan = ~$210",
+      "note": "Blended D30 of 38% from retention.json maps to ~14-month average subscriber lifespan. This is the base model as instructed — uses subscription ARPU only, not consumables.",
+      "source": "retention.json (blended D30: 38%), pricing.json (ARPU $14.99/month)"
+    },
+    "chronic_disease_ltv_segment": {
+      "arpu_monthly_sub_only": 14.99,
+      "average_lifespan_months_chronic": 24,
+      "subscription_ltv_chronic": 359.76,
+      "hardware_contribution": 249,
+      "total_ltv_chronic": 818,
+      "note": "High-value cohort flag: diabetes/kidney disease segment has 12-month subscription retention of 72% (vs. 31% blended), giving a ~24-month average lifespan. Combined with hardware and consumables ($384 over 24 months), total LTV for chronic disease users is ~$818. This segment should be overweighted in acquisition spend — their payback period and LTV:CAC ratios are significantly more favorable than the blended average.",
+      "source": "pricing.json (ltv_model.total_ltv_24mo_per_user.total: $818), retention.json (segment_breakdown.diabetes_kidney_disease.subscription_12mo: 72%)"
+    },
+    "blended_ltv": {
+      "hardware": 249,
+      "subscription_14_months": 210,
+      "consumables_note": "Consumables treated as second revenue stream per instructions; included in full blended LTV for reference only",
+      "total_hardware_plus_subscription": 459,
+      "total_with_consumables_24mo": 818,
+      "primary_ltv_used_in_cac_ratios": 459,
+      "rationale": "Hardware ($249) + 14-month subscription ($210) = $459 blended LTV used as the primary figure for LTV:CAC ratio computation. The $818 figure (which includes consumables over 24 months) is referenced separately as the full-picture LTV for context."
+    }
+  },
+
+  "arpu_monthly": {
+    "subscription_only": 14.99,
+    "full_blended_with_consumables": 34.99,
+    "payback_uses": "full_blended_with_consumables",
+    "payback_note": "Hardware cost recoupment and payback period calculations use full blended ARPU ($34.99/month: $14.99 subscription + ~$20 consumables) because consumables generate cash in the same billing cycle. Subscription LTV model is kept separate per instructions."
+  },
+
+  "cac_context": {
+    "fundamental_difference": "Clarifi CAC is the cost to get someone to BUY A $249 DEVICE, not install an app. Hardware DTC CAC is structurally 3–5× higher than app-install CAC. Every channel estimate below reflects purchase-conversion CAC, not awareness or install CAC.",
+    "hardware_dtc_cac_multiplier": "3–5× vs. app install CAC",
+    "distribution_verdict_input": "weak (hardware-specific caveat) — source: distribution.json",
+    "creator_economy_fit_input": "high — use lower end of influencer CAC range ($50). Source: distribution.json",
+    "aso_input": "medium — ASO drives companion app visibility but cannot directly drive hardware sales. Excluded as primary hardware acquisition channel.",
+    "k_factor_input": 0.15,
+    "k_factor_impact": "Marginal word of mouth. Sub-viral (k < 1.0). Each user generates ~0.15 additional users on average. Effectively reduces blended CAC slightly across all channels but does not materially shift any single-channel estimate. Applied as a ~5–8% blended CAC reduction factor.",
+    "k_factor_source": "distribution.json"
+  },
+
+  "channel_cac_estimates": [
+    {
+      "channel": "Kickstarter pre-launch campaign",
+      "cac_range_low": 40,
+      "cac_range_high": 60,
+      "cac_midpoint": 50,
+      "cac_source": "[ESTIMATED] Kickstarter-backed hardware typically achieves $40–$80 CAC inclusive of campaign costs. Lower end ($40) reflects strong organic press amplification (UTI/health device narrative drives Verge/TechCrunch coverage at near-zero cost). Higher end ($60) includes $10K–$20K paid ad spend to amplify campaign page traffic.",
+      "ltv_cac_ratio_low": 7.65,
+      "ltv_cac_ratio_high": 11.48,
+      "ltv_cac_label_low": "EXCELLENT (7:1–11:1)",
+      "ltv_cac_label_high": "EXCELLENT",
+      "ltv_used": 459,
+      "viability": "excellent",
+      "lean_tier_feasibility": "HIGH — Kickstarter is the canonical lean-tier first channel for hardware. Requires working prototype video; not viable at concept stage. Realistic target: $150K–$500K campaign with $10K–$20K ad amplification.",
+      "risk": "Requires working prototype. Early-bird pricing ($149) may compress initial hardware LTV contribution. Campaign funding creates community and press that de-risks subsequent channels.",
+      "recommended_priority": 1,
+      "source_alignment": "distribution.json channels_ranked rank:1; pricing.json hardware_pricing_recommendation.launch_kickstarter_early_bird"
+    },
+    {
+      "channel": "Reddit organic community seeding",
+      "cac_range_low": 10,
+      "cac_range_high": 30,
+      "cac_midpoint": 15,
+      "cac_source": "[ESTIMATED] Reddit/community organic: $10–$30 CAC for high-intent communities (UTI, diabetes forums). Reflects founder time cost + optional Reddit Ads for beta recruitment ($5–$15). r/UrinaryTractInfections, r/kidneydisease, r/diabetes_t1 are Tier 1 target communities with documented high pain intensity and product-market alignment. Source: hardware CAC context from skill inputs + distribution.json channel rank:2.",
+      "ltv_cac_ratio_low": 15.3,
+      "ltv_cac_ratio_high": 45.9,
+      "ltv_cac_label_low": "EXCELLENT (15:1–45:1)",
+      "ltv_cac_label_high": "EXCEPTIONAL",
+      "ltv_used": 459,
+      "viability": "excellent",
+      "lean_tier_feasibility": "HIGH — zero paid spend required for organic seeding. Founder time is the only cost. The Reddit CAC is primarily opportunity-cost-based. Communities actively discuss this exact product need. Critical caveat: communities will scrutinize regulatory claims aggressively; unprepared engagement will backfire.",
+      "risk": "Cannot be scaled — community seeding is a 100–500 unit play, not a 10,000-unit play. Best used as early traction proof and product feedback mechanism, not primary growth engine. Overly promotional posts will generate backlash.",
+      "recommended_priority": 2,
+      "source_alignment": "distribution.json channels_ranked rank:2; reddit market_insights community pain signal density"
+    },
+    {
+      "channel": "TikTok organic creator seeding (UTI/women's health + keto/metabolic)",
+      "cac_range_low": 15,
+      "cac_range_high": 30,
+      "cac_midpoint": 22.50,
+      "cac_source": "[ESTIMATED] TikTok organic: $15–$30 CAC (trending niche). Device seeding 20–50 micro-creators (10K–500K followers) at product cost ($249 per unit seeded). Estimated 5–15% of creator audience clicks to landing page, 1–3% to purchase. Creator economy fit: HIGH (source: distribution.json). Device demo-ability is strong: real-time Bluetooth result reveal is native TikTok content format. AZO brand TikTok creator partnerships confirmed (source: tiktok market_insights). Lower end of range reflects UTI/women's health creator segment (highest pain intensity, highest conversion); upper end reflects keto/metabolic (larger audience but more price-sensitive).",
+      "ltv_cac_ratio_low": 15.3,
+      "ltv_cac_ratio_high": 30.6,
+      "ltv_cac_label_low": "EXCELLENT (15:1–30:1)",
+      "ltv_cac_label_high": "EXCELLENT",
+      "ltv_used": 459,
+      "viability": "excellent",
+      "lean_tier_feasibility": "MEDIUM-HIGH — cost is devices gifted to creators (~$250 COGS equivalent per unit seeded). For a lean founder, seeding 10–20 devices = $2,500–$5,000 outlay. No media spend required. Conversion tracking requires UTM codes or custom affiliate links. Demographic mismatch risk: TikTok audience skews 18–34; highest-WTP segment for Clarifi is 35–55.",
+      "risk": "TikTok platform instability (US regulatory risk for ByteDance). Demographic mismatch between TikTok viewership and highest-WTP buyer. Creator seeding results are variable — 1 in 5 seeded creators may produce a meaningful conversion event. Requires compliance with FTC creator disclosure requirements.",
+      "recommended_priority": 3,
+      "source_alignment": "distribution.json creator_economy_fit: high, creator_fit_breakdown; tiktok market_insights section 2.2 (UTI), 2.3 (keto)"
+    },
+    {
+      "channel": "Amazon DTC listing + PPC",
+      "cac_range_low": 40,
+      "cac_range_high": 70,
+      "cac_midpoint": 55,
+      "cac_source": "[ESTIMATED] Amazon hardware PPC: $30–$70 CAC for $200+ devices. Applied $40–$70 range reflecting launch-phase inefficiency (low review count suppresses algorithm visibility, increasing effective CPC). Keywords: 'smart urine analyzer', 'UTI monitor device', 'home urinalysis device'. CPC range $1.50–$4.00 (low competition confirmed in web-search market_insights for device-specific queries). Requires 50+ reviews for algorithm efficiency — this is a months-6–18 channel, not a launch channel.",
+      "ltv_cac_ratio_low": 6.56,
+      "ltv_cac_ratio_high": 11.48,
+      "ltv_cac_label_low": "EXCELLENT to HEALTHY (6:1–11:1)",
+      "ltv_cac_label_high": "EXCELLENT",
+      "ltv_used": 459,
+      "viability": "excellent",
+      "lean_tier_feasibility": "MEDIUM — requires physical inventory, Amazon FBA logistics, and $1,500–$3,000/month minimum PPC budget for actionable data. Not appropriate pre-Kickstarter or pre-MVP. Post-Kickstarter delivery, Amazon is the highest-scale low-cost-per-qualified-click hardware channel available.",
+      "risk": "Amazon review velocity is critical — without 50+ reviews the listing is invisible and PPC is inefficient. Review seeding requires time, not just spend. Amazon algorithm favors established ASINs; early PPC costs may be 2–3× mature costs.",
+      "recommended_priority": 4,
+      "source_alignment": "distribution.json channels_ranked rank:4; web-search market_insights smart device SERP wedge"
+    },
+    {
+      "channel": "Word of mouth / referral (k-factor driven)",
+      "cac_range_low": 5,
+      "cac_range_high": 20,
+      "cac_midpoint": 12.50,
+      "cac_source": "[ESTIMATED] Word of mouth: $5–$20 for hardware (referral from existing users). k-factor of 0.15 means 100 acquired users generate 15 additional organic users at effectively zero incremental acquisition cost. Applied as a secondary CAC reduction modifier across all channels, not a standalone channel. The UTI/chronic disease community has genuine but slow word-of-mouth dynamics. Source: skill input context + distribution.json k_factor_estimate: 0.15.",
+      "ltv_cac_ratio_low": 22.95,
+      "ltv_cac_ratio_high": 91.8,
+      "ltv_cac_label_low": "EXCEPTIONAL (23:1–92:1)",
+      "ltv_cac_label_high": "EXCEPTIONAL",
+      "ltv_used": 459,
+      "viability": "excellent_but_not_scalable",
+      "lean_tier_feasibility": "HIGH for capturing — but k=0.15 means this is a trailing effect of other acquisition, not a standalone growth engine. Cannot be manufactured directly. Referral program (e.g., $25 credit for both referrer and referee) could modestly increase k-factor toward 0.20–0.25.",
+      "risk": "Not a primary acquisition strategy. Health data privacy norms in chronic disease segments (diabetes, kidney disease) suppress referral below k=0.10 in those cohorts. k=0.15 blended. Sub-viral; Clarifi will not grow organically without paid or creator-led acquisition as the primary engine.",
+      "recommended_priority": 5,
+      "source_alignment": "distribution.json k_factor_estimate: 0.15, viral_loop_type: community-referral-weak"
+    },
+    {
+      "channel": "Paid social — Meta (Facebook / Instagram)",
+      "cac_range_low": 80,
+      "cac_range_high": 150,
+      "cac_midpoint": 115,
+      "cac_source": "[ESTIMATED] Paid social (Meta): $80–$150 CAC. Meta health ad restrictions significantly constrain targeting precision for health-adjacent diagnostic products pre-FDA clearance. Health claim copy must be wellness-framed ('monitor your wellbeing') not clinical ('detect UTI markers'). This limitation reduces conversion rate vs. direct-response health DTC. Audience targeting (interests: chronic illness, diabetes, UTI health) is available but broad. Source: distribution.json paid_feasibility: marginal, paid_feasibility_rationale Meta health ad restrictions.",
+      "ltv_cac_ratio_low": 3.06,
+      "ltv_cac_ratio_high": 5.74,
+      "ltv_cac_label_low": "HEALTHY to MARGINAL (3:1–5:1)",
+      "ltv_cac_label_high": "HEALTHY",
+      "ltv_used": 459,
+      "viability": "marginal_to_healthy",
+      "lean_tier_feasibility": "LOW — minimum viable paid budget on Meta for hardware is $8,000–$15,000/month to generate actionable conversion data. Not appropriate for lean founders pre-Kickstarter. Health ad restrictions will trigger ad disapprovals without careful copy review. The LTV:CAC ratio (3:1–5:1) is positive but the lowest of all channels — Meta is a scale channel, not a lean-founder channel.",
+      "risk": "Health ad policy violations can result in account suspension. The 3:1 LTV:CAC ratio for Meta at $150 CAC is the tightest margin in the channel stack — any deterioration in retention or conversion rate pushes this toward unprofitable. Meta should be a growth-phase channel (post-product-market fit), not a concept-stage channel.",
+      "recommended_priority": 6,
+      "source_alignment": "distribution.json paid_feasibility: marginal; skill input context paid_social CAC $80–$150"
+    },
+    {
+      "channel": "Creator / influencer seeding (larger creators, paid partnerships)",
+      "cac_range_low": 60,
+      "cac_range_high": 90,
+      "cac_midpoint": 75,
+      "cac_source": "[ESTIMATED] Creator seeding for hardware: $50–$120 CAC (including product cost + commission). Applied $60–$90 range for mid-tier creators (100K–2M followers) given high creator economy fit (distribution.json: creator_economy_fit: high). Lower end ($60) reflects strong UTI/women's health creator authenticity and high-intent audience; upper end ($90) reflects broader metabolic health creators with lower conversion specificity. Distribution.json confirms $15–$40 CAC for micro-creator (organic seeding) and $50–$120 for paid partnerships — using $60–$90 as the paid partnership range.",
+      "ltv_cac_ratio_low": 5.1,
+      "ltv_cac_ratio_high": 7.65,
+      "ltv_cac_label_low": "EXCELLENT to HEALTHY (5:1–7:1)",
+      "ltv_cac_label_high": "EXCELLENT",
+      "ltv_used": 459,
+      "viability": "excellent_to_healthy",
+      "lean_tier_feasibility": "MEDIUM — paid creator partnerships at mid-tier require $3,000–$10,000 per campaign (creator fee + product cost). Feasible for lean founders post-Kickstarter when cash is available. The 5:1–7:1 LTV:CAC ratio is strong. Micro-creator organic seeding (see TikTok channel above) is the lean-tier version of this channel.",
+      "risk": "Creator performance variance is high — CAC range can be 2–3× wider than estimate based on creator fit and content quality. Hardware conversion funnel is longer than digital products, reducing creator motivation relative to instant-purchase items. FTC disclosure requirements must be met.",
+      "recommended_priority": 3,
+      "source_alignment": "distribution.json creator_economy_fit: high; skill input context creator/influencer seeding $50–$120 CAC"
+    },
+    {
+      "channel": "Google Ads — paid search (UTI + smart device comparison queries)",
+      "cac_range_low": 80,
+      "cac_range_high": 130,
+      "cac_midpoint": 105,
+      "cac_source": "[ESTIMATED] Google Ads on smart device comparison queries ($4–$9 CPC confirmed in web-search market_insights, low competition). UTI high-intent queries have $3.50–$5.50 CPC but high competition from pharmacy brands. Estimated conversion rate 2–4% on device-specific landing pages. At $5 average CPC and 2.5% CVR: ~40 clicks per conversion = $200 CAC at worst case. At $4 CPC and 4% CVR: ~25 clicks = $100 CAC. Applied $80–$130 range to reflect launch-phase landing page optimization maturity.",
+      "ltv_cac_ratio_low": 3.53,
+      "ltv_cac_ratio_high": 5.74,
+      "ltv_cac_label_low": "HEALTHY (3.5:1–5.7:1)",
+      "ltv_cac_label_high": "HEALTHY",
+      "ltv_used": 459,
+      "viability": "healthy",
+      "lean_tier_feasibility": "LOW-MEDIUM — paid search requires $2,000–$5,000/month minimum for meaningful data. YMYL health content ad policies require wellness-framed copy pre-FDA clearance. The smart device comparison cluster (low CPC, low competition) is the lean-tier entry point for paid search — not the UTI commodity cluster. Source: web-search market_insights Cluster C smart device keywords.",
+      "risk": "Google health advertising certification requirements. Without FDA clearance, diagnostic-adjacent copy triggers policy violations. YMYL domain authority barrier means organic search won't supplement paid for 12–18 months. High CPCs on UTI commercial queries ($3.50–$5.50) with pharmacy brand competition can deteriorate CAC quickly.",
+      "recommended_priority": 5,
+      "source_alignment": "distribution.json channels_ranked rank:5 SEO; web-search market_insights Cluster C ($4–$9 CPC, keyword difficulty 10–20)"
+    }
+  ],
+
+  "cac_summary_table": {
+    "note": "LTV used for all ratios = blended hardware + 14-month subscription LTV = $459. Ordered by lean-tier feasibility and recommended priority.",
+    "channels": [
+      {
+        "channel": "Reddit organic seeding",
+        "cac_range": "$10–$30",
+        "ltv_cac_ratio": "15:1–45:1",
+        "viability": "EXCELLENT",
+        "lean_tier": "HIGH",
+        "timing": "Pre-launch + ongoing"
+      },
+      {
+        "channel": "TikTok organic creator seeding",
+        "cac_range": "$15–$30",
+        "ltv_cac_ratio": "15:1–30:1",
+        "viability": "EXCELLENT",
+        "lean_tier": "MEDIUM-HIGH",
+        "timing": "Pre-launch + launch"
+      },
+      {
+        "channel": "Kickstarter pre-launch campaign",
+        "cac_range": "$40–$60",
+        "ltv_cac_ratio": "7:1–11:1",
+        "viability": "EXCELLENT",
+        "lean_tier": "HIGH",
+        "timing": "Pre-MVP (6–12 months out)"
+      },
+      {
+        "channel": "Word of mouth / referral (k=0.15)",
+        "cac_range": "$5–$20",
+        "ltv_cac_ratio": "23:1–92:1",
+        "viability": "EXCELLENT (not scalable)",
+        "lean_tier": "HIGH",
+        "timing": "Post-launch trailing effect"
+      },
+      {
+        "channel": "Creator / influencer paid partnerships",
+        "cac_range": "$60–$90",
+        "ltv_cac_ratio": "5:1–7:1",
+        "viability": "EXCELLENT to HEALTHY",
+        "lean_tier": "MEDIUM",
+        "timing": "Post-Kickstarter"
+      },
+      {
+        "channel": "Amazon DTC + PPC",
+        "cac_range": "$40–$70",
+        "ltv_cac_ratio": "6:1–11:1",
+        "viability": "EXCELLENT",
+        "lean_tier": "MEDIUM",
+        "timing": "Months 6–18 post-launch"
+      },
+      {
+        "channel": "Google Ads paid search",
+        "cac_range": "$80–$130",
+        "ltv_cac_ratio": "3.5:1–5.7:1",
+        "viability": "HEALTHY",
+        "lean_tier": "LOW-MEDIUM",
+        "timing": "Growth phase"
+      },
+      {
+        "channel": "Paid social — Meta",
+        "cac_range": "$80–$150",
+        "ltv_cac_ratio": "3:1–5:1",
+        "viability": "MARGINAL to HEALTHY",
+        "lean_tier": "LOW",
+        "timing": "Scale phase only (post-PMF)"
+      }
+    ]
+  },
+
+  "payback_period": {
+    "arpu_used_for_payback": 34.99,
+    "arpu_note": "Full blended ARPU ($34.99 = $14.99 subscription + ~$20 consumables/month for active users) used for payback period. This is the realistic monthly cash recovery rate for an active subscriber.",
+    "hardware_recoupment_note": "Hardware cost recoupment is distinct from subscription payback. The device cost ($249 retail; ~$80–$120 estimated COGS) is a one-time revenue event, not recouped through subscription. The $249 hardware revenue lands at device purchase — no recoupment period required. Payback below refers to CAC recoupment through recurring revenue streams only.",
+    "scenarios": [
+      {
+        "scenario": "Kickstarter/Reddit organic channel",
+        "cac_used": 50,
+        "payback_months": 1.4,
+        "formula": "$50 CAC / $34.99 ARPU = ~1.4 months",
+        "verdict": "EXCEPTIONAL — payback in less than 6 weeks. Hardware purchase typically precedes first cartridge bill by 30+ days (3-month starter kit included), meaning cash-flow-positive on Day 1 for most acqui-sitions in these channels."
+      },
+      {
+        "scenario": "TikTok creator seeding",
+        "cac_used": 22.50,
+        "payback_months": 0.64,
+        "formula": "$22.50 CAC / $34.99 ARPU = ~0.6 months",
+        "verdict": "EXCEPTIONAL — CAC is recouped in the first billing cycle."
+      },
+      {
+        "scenario": "Amazon DTC + PPC (midpoint)",
+        "cac_used": 55,
+        "payback_months": 1.57,
+        "formula": "$55 CAC / $34.99 ARPU = ~1.6 months",
+        "verdict": "EXCELLENT — payback in under 2 months."
+      },
+      {
+        "scenario": "Creator/influencer paid partnership (midpoint)",
+        "cac_used": 75,
+        "payback_months": 2.14,
+        "formula": "$75 CAC / $34.99 ARPU = ~2.1 months",
+        "verdict": "GOOD — payback in approximately 2 months."
+      },
+      {
+        "scenario": "Paid social / Google Ads (midpoint, growth phase)",
+        "cac_used": 115,
+        "payback_months": 3.29,
+        "formula": "$115 CAC / $34.99 ARPU = ~3.3 months",
+        "verdict": "ACCEPTABLE — payback in approximately 3 months. Industry benchmark for SaaS is 12 months; hardware DTC benchmark is 3–6 months. 3.3 months is within the acceptable range."
+      },
+      {
+        "scenario": "Meta paid (worst-case, $150 CAC)",
+        "cac_used": 150,
+        "payback_months": 4.29,
+        "formula": "$150 CAC / $34.99 ARPU = ~4.3 months",
+        "verdict": "MARGINAL — payback in ~4 months at worst-case Meta CAC. Acceptable if D30 retention holds at 38%+, marginal if D30 deteriorates below 30%."
+      }
+    ],
+    "payback_benchmark": "Hardware DTC industry benchmark for acceptable CAC payback: 3–6 months. All Clarifi channels except worst-case Meta fall within or well below this benchmark. This is a positive unit economics signal.",
+    "hardware_vs_subscription_caveat": "The $249 hardware revenue at purchase immediately offsets a portion of any CAC. For a $60 CAC, the hardware sale alone generates ~4× CAC in revenue — meaning the subscription and consumables are 100% incremental margin from Day 1. This is the key structural advantage of hardware+subscription vs. pure-SaaS: hardware revenue provides immediate cash that partially self-funds acquisition."
+  },
+
+  "ltv_cac_thresholds": {
+    "reference_framework": {
+      "below_1_to_1": "Losing money on every customer — unsustainable",
+      "1_to_1_to_3_to_1": "Marginal — marginal profitability after payback, limited ability to invest in growth",
+      "3_to_1_to_5_to_1": "Healthy — sustainable growth, standard SaaS/DTC target",
+      "5_to_1_to_10_to_1": "Excellent — strong unit economics, significant reinvestment capacity",
+      "above_10_to_1": "Exceptional — category-defining margins, but may signal underinvestment in growth"
+    },
+    "clarifi_positioning": "The majority of Clarifi's viable channels (Kickstarter, Reddit, TikTok, Amazon) produce LTV:CAC ratios in the EXCELLENT to EXCEPTIONAL range (5:1–30:1+). Even the worst channel (Meta at $150 CAC) produces a 3:1 ratio, which is the minimum healthy threshold. On paper, Clarifi's unit economics are compelling.",
+    "critical_caveat": "These LTV:CAC ratios assume successful product-market fit at launch — i.e., that devices work reliably, users activate subscriptions at the 65% rate modeled, and D30 retention holds at the 38% blended estimate. Pre-MVP, none of these assumptions are validated. The excellent ratios are a projection, not a measurement."
+  },
+
+  "unit_economics_summary": {
+    "primary_ltv": 459,
+    "ltv_note": "Hardware ($249) + 14-month blended subscription ($210). Does not include consumables.",
+    "full_ltv_with_consumables_24mo": 818,
+    "chronic_disease_segment_ltv": 818,
+    "best_channel_cac": 10,
+    "best_channel": "Reddit organic seeding (minimum end)",
+    "worst_viable_channel_cac": 150,
+    "worst_viable_channel": "Meta paid social (maximum estimate)",
+    "best_ltv_cac_ratio": "45:1 (Reddit organic, $10 CAC)",
+    "worst_ltv_cac_ratio": "3:1 (Meta paid, $150 CAC)",
+    "recommended_blended_target_cac": {
+      "value": 55,
+      "rationale": "Kickstarter ($50 midpoint) + Reddit ($15) + TikTok creator seeding ($22) blended across early-stage channels. A $55 blended CAC across early channels produces an 8:1 LTV:CAC ratio — strong enough to reinvest in growth while maintaining positive unit economics.",
+      "ltv_cac_at_target": 8.35
+    }
+  },
+
+  "segment_cac_notes": {
+    "chronic_disease_high_value_cohort": {
+      "flag": "HIGH-VALUE COHORT — overweight in acquisition spend",
+      "ltv": 818,
+      "source": "pricing.json ltv_model.total_ltv_24mo_per_user.total",
+      "d30_retention": 78,
+      "subscription_12mo_retention": 72,
+      "recommended_cac_ceiling": 163,
+      "cac_ceiling_formula": "$818 LTV × 20% = $163 maximum CAC at standard 5:1 LTV:CAC floor",
+      "acquisition_channels": "r/kidneydisease, r/diabetes_t1, endocrinologist/nephrologist referral partnerships (Year 2+), CKD patient advocacy organizations",
+      "note": "This segment justifies significantly higher CAC than the blended model. A $163 CAC ceiling for chronic disease users still produces a 5:1 LTV:CAC ratio. Conversely, a $50 Kickstarter CAC for a chronic disease user produces a 16:1 ratio."
+    },
+    "uti_episodic_low_value_cohort": {
+      "flag": "LOW-VALUE COHORT — cap acquisition spend, prioritize one-time hardware conversion over subscription",
+      "ltv_subscription_12mo": 18,
+      "ltv_subscription_note": "12-month subscription retention for UTI episodic is only 18% (vs. 72% for chronic disease). Subscription LTV for this segment is minimal. Hardware LTV ($249) is the primary revenue event.",
+      "effective_ltv_estimate": 280,
+      "effective_ltv_note": "$249 hardware + ~$30 in subscription revenue (18% × 14 months × $14.99) — subscription contributes marginally for this segment. Consumables add more, but consumable revenue also drops with subscription churn.",
+      "recommended_cac_ceiling": 56,
+      "cac_ceiling_formula": "$280 effective LTV × 20% = $56 maximum CAC at 5:1 LTV:CAC floor",
+      "note": "The UTI episodic segment is the top-of-funnel awareness driver (largest TikTok/Reddit audience, highest emotional resonance) but the lowest LTV contributor. Marketing to this segment is justified for brand building and hardware sales, but subscription-focused CAC models don't apply. Treat as a hardware conversion channel, not a subscription LTV channel."
+    },
+    "biohacker_moderate_value_cohort": {
+      "flag": "MODERATE-VALUE COHORT — time-limited engagement window",
+      "ltv_subscription_12mo": 28,
+      "effective_ltv_estimate": 360,
+      "effective_ltv_note": "$249 hardware + ~$42 subscription (28% × 10 months × $14.99) + estimated consumables. Gadget fatigue accelerates churn after month 4.",
+      "recommended_cac_ceiling": 72,
+      "cac_ceiling_formula": "$360 effective LTV × 20% = $72 maximum CAC at 5:1 floor",
+      "note": "Biohackers are the best early-adoption cohort for press and social proof, but the worst long-term subscription cohort. High initial engagement generates reviews, content, and community endorsement that benefits all segments — value beyond direct LTV."
+    }
+  },
+
+  "critical_risks_and_caveats": [
+    {
+      "risk": "All excellent LTV:CAC ratios are pre-PMF projections, not measurements",
+      "severity": "critical",
+      "detail": "The 5:1–30:1 LTV:CAC ratios computed above assume: (1) D30 retention of 38% blended — not validated pre-MVP; (2) subscription conversion rate of 65% from device owners — not validated; (3) hardware reliability sufficient to sustain usage (>95% successful read rate first attempt — not validated); (4) $249 device price that consumers will actually pay — validated only by competitor pricing signals, not by Clarifi demand data. If any of these assumptions fail materially, the LTV:CAC ratios collapse. A 50% reduction in D30 retention (38% → 19%) halves subscription LTV and reduces blended LTV from $459 to ~$354, tightening all ratios proportionally.",
+      "implication": "Do not make capital allocation decisions based on these projections without first running a RAT experiment to validate at least the device purchase conversion rate and D30 retention signal."
+    },
+    {
+      "risk": "Hardware launch failure compresses all CAC economics",
+      "severity": "high",
+      "detail": "A hardware launch with >5% failure rate (Bluetooth pairing failures, sensor errors, cartridge incompatibilities) generates immediate 1-star App Store reviews. This degrades conversion rates across all acquisition channels simultaneously — a higher CAC is required to achieve the same purchase rate from a damaged reputation baseline. Retention.json explicitly identifies setup/onboarding dropout as a medium severity churn risk. One failed first session is rarely recovered for hardware products.",
+      "implication": "The true CAC risk for Clarifi is not the channel costs — it is a hardware quality failure that inflates CAC across all channels simultaneously. Pre-launch hardware reliability testing (>95% first-read success rate target) is the most important CAC-protection investment."
+    },
+    {
+      "risk": "Cartridge depletion churn vector inflates effective CAC",
+      "severity": "high",
+      "detail": "Retention.json identifies cartridge depletion as the single highest-probability churn vector (critical severity). An estimated 25–35% of potential D30 churn events are attributable to cartridge depletion rather than loss of perceived value. This is recoverable churn that becomes permanent when re-engagement windows close. If cartridge depletion increases actual D30 churn from 62% (staying) to 45% (staying), average subscription lifespan drops from 14 months to ~9 months, reducing subscription LTV from $210 to ~$135 and blended LTV from $459 to ~$384 — a 16% LTV reduction that tightens all CAC ratios by 16%.",
+      "implication": "Auto-ship cartridge subscription is the highest-ROI LTV-protection investment in the system. Every dollar spent making cartridge replenishment frictionless directly protects the LTV figures used in these CAC ratios."
+    },
+    {
+      "risk": "Distribution verdict is weak — hardware distribution is categorically harder than app distribution",
+      "severity": "high",
+      "detail": "Distribution.json verdict is 'weak' specifically because hardware distribution requires manufacturing, supply chain, and DTC or retail logistics before a single user can be acquired. This creates a multi-month lead time before any channel becomes active. The CAC model above assumes distribution infrastructure exists. In reality, for a concept-stage lean founder, the actual time-to-first-CAC-measurement is 12–18 months minimum (prototype → Kickstarter campaign → fulfillment → app store → first organic reviews). All CAC ratios are theoretical until distribution is solved.",
+      "implication": "The first priority is not optimizing CAC channels — it is executing a Kickstarter campaign to validate demand and generate first-distribution infrastructure. Without a working prototype, none of the channels in this model are accessible."
+    },
+    {
+      "risk": "Health advertising restrictions constrain paid scale channels",
+      "severity": "medium",
+      "detail": "Meta health ad restrictions and Google healthcare advertising certification requirements limit paid acquisition before FDA clearance. Without FDA clearance, diagnostic-adjacent claims in ad copy trigger policy violations. This forces wellness-framed copy that reduces conversion rates vs. direct medical messaging. The Meta and Google channels have lower LTV:CAC ratios (3:1–5.7:1) in part because of this copy constraint — FDA clearance would likely improve these ratios by 20–40% by enabling more targeted, higher-conversion ad copy.",
+      "implication": "FDA clearance is not just a regulatory milestone — it is a paid acquisition unlock that improves the Meta and Google CAC economics materially. Pursuing at least one 510(k) clearance (UTI markers are the highest-value claim) is an ROI-positive investment beyond clinical credibility."
+    },
+    {
+      "risk": "Segment mix determines blended LTV — acquisition channel determines segment mix",
+      "severity": "medium",
+      "detail": "The channels with the best lean-tier economics (Reddit, TikTok UTI community) attract a mix of chronic disease users (high LTV: $818) and episodic UTI users (low LTV: ~$280). If acquisition skews toward episodic UTI users via TikTok's younger demographic, actual blended LTV will be materially below the $459 model. Conversely, Reddit r/kidneydisease and r/diabetes_t1 acquisition skews toward chronic disease users with $818 LTV. Retention.json recommends 'chronic disease segment prioritization in acquisition — the sticky cohort should be overweighted in early CAC spend even if it means lower top-of-funnel volume.'",
+      "implication": "Not all LTV-equivalent CAC is equal. $50 CAC for a chronic disease user (LTV $818, ratio 16:1) is substantially more valuable than $50 CAC for an episodic UTI user (LTV $280, ratio 5.6:1). Channel selection should be optimized for segment quality, not just volume."
+    }
+  ],
+
+  "max_cac_targets": {
+    "note": "Maximum CAC at 3:1 LTV:CAC minimum threshold (industry floor for sustainable growth). Any CAC above these figures represents sub-threshold unit economics.",
+    "blended_ltv_459": {
+      "at_3_to_1_floor": 153,
+      "at_5_to_1_target": 92,
+      "at_7_to_1_excellent": 66,
+      "note": "Using blended LTV $459. At 3:1 floor, maximum viable CAC is $153 — every channel in this model falls below this ceiling. At 5:1 target (standard growth threshold), maximum CAC is $92 — Meta at $150 falls above this, confirming Meta is a marginal channel."
+    },
+    "chronic_disease_ltv_818": {
+      "at_3_to_1_floor": 273,
+      "at_5_to_1_target": 164,
+      "at_7_to_1_excellent": 117,
+      "note": "For chronic disease user segment, maximum CAC at 5:1 target is $164 — all channels including Meta fall comfortably within this threshold. This confirms that any acquisition channel is viable if it reliably delivers chronic disease users."
+    }
+  },
+
+  "recommended_cac_strategy": {
+    "phase_1_concept_stage": {
+      "label": "Phase 1: Concept / Pre-Kickstarter (NOW)",
+      "recommended_channels": ["Reddit organic seeding", "TikTok micro-creator seeding (10–20 devices)"],
+      "estimated_cac": "$10–$30 blended",
+      "estimated_monthly_budget": "$500–$2,500 (device COGS for creator seeding + founder time)",
+      "goal": "Generate 50–200 waitlist sign-ups, validate demand signal with real email captures, gather community feedback that improves product. NOT a revenue-generating phase.",
+      "ltv_cac_expected": "15:1–30:1 (EXCELLENT)"
+    },
+    "phase_2_kickstarter": {
+      "label": "Phase 2: Kickstarter Campaign (Requires Working Prototype)",
+      "recommended_channels": ["Kickstarter campaign", "Paid Meta/Google to amplify campaign page ($10K–$20K)"],
+      "estimated_cac": "$40–$60 blended",
+      "estimated_monthly_budget": "$10,000–$20,000 total campaign spend (not monthly)",
+      "goal": "Validate purchase intent with real money. Target: $150K–$500K campaign. First 500–2,000 device orders. Generates press coverage, early adopter cohort, and cash for manufacturing.",
+      "ltv_cac_expected": "7:1–11:1 (EXCELLENT)"
+    },
+    "phase_3_post_kickstarter": {
+      "label": "Phase 3: Post-Kickstarter / Early Growth (Months 6–18)",
+      "recommended_channels": ["Amazon DTC + PPC", "Creator/influencer paid partnerships", "Reddit ongoing community", "Google Ads smart device cluster"],
+      "estimated_cac": "$50–$80 blended",
+      "estimated_monthly_budget": "$5,000–$15,000/month",
+      "goal": "Scale to 1,000–5,000 device units sold. Establish Amazon presence with 50+ reviews. Build paid acquisition machine.",
+      "ltv_cac_expected": "5:1–9:1 (EXCELLENT)"
+    },
+    "phase_4_scale": {
+      "label": "Phase 4: Scale (Post-PMF, Post-FDA Clearance)",
+      "recommended_channels": ["Meta paid social", "Full Google Ads stack", "Retail distribution (Target, Best Buy, Amazon Featured)", "B2B2C / FSA-HSA marketing"],
+      "estimated_cac": "$80–$130 blended",
+      "estimated_monthly_budget": "$25,000–$100,000+/month",
+      "goal": "Reach 10,000+ device units/year. Establish category leadership. FDA clearance unlocks medical framing in paid copy, improving Meta/Google CAC by 20–40%.",
+      "ltv_cac_expected": "3.5:1–5.7:1 (HEALTHY)"
+    }
+  },
+
+  "viability_verdict": {
+    "verdict": "VIABLE WITH CONDITIONS",
+    "score": 7,
+    "score_max": 10,
+    "score_rationale": "Unit economics on paper are compelling — excellent LTV:CAC ratios across most viable channels (5:1–30:1), short payback periods (1.4–4.3 months), and a full-picture LTV of $459–$818 that is high for consumer hardware. However, the score is held at 7/10 rather than 9/10 because: (1) all ratios are pre-PMF projections contingent on unvalidated assumptions about retention, subscription conversion, and hardware reliability; (2) distribution is rated 'weak' by distribution.json — hardware distribution requires capital, time, and manufacturing infrastructure that is not yet in place; (3) the lean-founder context means access to the most capital-efficient channels (Reddit, TikTok micro-creator) is real, but scale channels (Meta, Google, Amazon) require budgets that exceed typical lean-founder constraints.",
+    "conditions_for_viability": [
+      "Hardware achieves >95% first-read success rate before public launch — the CAC model collapses under a reliability failure",
+      "Kickstarter campaign validates real purchase intent at $40–$60 CAC before capital is committed to manufacturing at scale",
+      "Subscription conversion from device owners reaches at least 50% (model assumes 65%) — below 50%, blended LTV drops materially",
+      "Auto-ship cartridge subscription is built into v1 — the cartridge depletion churn vector is too significant to leave unaddressed",
+      "Acquisition mix prioritizes chronic disease users (r/kidneydisease, r/diabetes_t1) over episodic UTI users to protect blended LTV"
+    ],
+    "honest_assessment": "The excellent LTV:CAC ratios in this model are structural — they derive from the real combination of a $249 high-ASP hardware item + recurring subscription + consumable revenue streams. A product with this revenue architecture will always have favorable unit economics IF it can be built, distributed, and retained at the modeled rates. The risk is not in the economics — it is in the execution. Hardware at concept stage has a long road to validated unit economics. The numbers here are promising signals, not confirmation of viability.",
+    "market_insights_calibration": [
+      {
+        "source": "home-urinalysis-reddit-2026-05.md",
+        "signal": "Community pain intensity is genuine and documented. r/UrinaryTractInfections quote: 'I'd pay almost anything to not have to go to urgent care at 2am on a Sunday.' This is not manufactured demand — it is established, documented, and persistent. Reddit organic CAC of $10–$30 is realistic precisely because the pain is pre-existing.",
+        "cac_impact": "Supports low-end CAC estimates for Reddit and community channels. High pain intensity = high organic conversion rate."
+      },
+      {
+        "source": "home-urinalysis-tiktok-2026-05.md",
+        "signal": "AZO brand TikTok creator partnerships confirmed as of late 2024. Levels Health ran TikTok-targeted paid acquisition in 2024 for CGM. Category precedent for creator-driven hardware acquisition is validated.",
+        "cac_impact": "Confirms $15–$40 creator seeding CAC range is achievable in adjacent hardware categories."
+      },
+      {
+        "source": "home-urinalysis-apps-2026-05.md",
+        "signal": "WHOOP subscription model confirmed $100M+ ARR by mid-2024 with $30/month subscription + $0 hardware model. Oura Ring 1M+ users. Hardware + subscription economics at scale are validated in the consumer health space.",
+        "cac_impact": "The LTV model is calibrated to a proven consumer health hardware subscription archetype. The $459 blended LTV figure is defensible against category benchmarks."
+      },
+      {
+        "source": "home-urinalysis-web-search-2026-05.md",
+        "signal": "Smart device comparison queries (keyword difficulty 10–20, CPC $4–$9) are explicitly identified as near-zero SERP competition. 'Best home urinalysis device' has very low competition. This is a free CAC wedge that expires as the category matures.",
+        "cac_impact": "SEO organic from smart device comparison content has near-zero CAC but requires 6–12 month investment horizon. Not a launch-phase channel but a high-value medium-term play."
+      }
+    ]
+  },
+
+  "metadata": {
+    "skill": "cac-modeler",
+    "idea_slug": "clarifi-smart-urinalysis",
+    "generated_date": "2026-05-25",
+    "inputs_consumed": [
+      "memory/ideas/clarifi-smart-urinalysis/pricing.json",
+      "memory/ideas/clarifi-smart-urinalysis/retention.json",
+      "memory/ideas/clarifi-smart-urinalysis/distribution.json",
+      "memory/ideas/clarifi-smart-urinalysis/competitors.json",
+      "memory/market_insights/home-urinalysis-reddit-2026-05.md",
+      "memory/market_insights/home-urinalysis-tiktok-2026-05.md",
+      "memory/market_insights/home-urinalysis-apps-2026-05.md",
+      "memory/market_insights/home-urinalysis-web-search-2026-05.md"
+    ],
+    "key_assumptions": [
+      "Founder tier: lean (no user profile, early-stage hardware startup, concept stage)",
+      "LTV base model: hardware ($249) + subscription only ($14.99 × 14 months = $210) = $459",
+      "Subscription ARPU ($14.99/month) used for LTV model; full blended ARPU ($34.99) used for payback period",
+      "Blended D30 retention: 38% → average lifespan 14 months (from retention.json)",
+      "Subscription conversion from device owners: 65% (from pricing.json)",
+      "Chronic disease segment LTV: $818 (24-month, hardware + subscription + consumables — from pricing.json ltv_model)",
+      "k-factor: 0.15 (from distribution.json) — applied as marginal modifier, not standalone channel",
+      "All channel CAC estimates: [ESTIMATED] from analogous hardware DTC category benchmarks unless noted"
+    ],
+    "confidence_level": "medium",
+    "confidence_caveat": "Pre-MVP, pre-first-customer. All LTV and retention figures are model projections. No primary conversion data exists for Clarifi specifically. Confidence in directional viability: high. Confidence in specific CAC figures: medium (hardware analogues provide calibration, but Clarifi has no direct comparable). Re-run after Kickstarter campaign with actual conversion data."
+  }
+}
